@@ -1,6 +1,6 @@
 import { Speed, Distance } from "./interfaces"
 
-export function getSpeed(speed: Speed, targetUnit:string) {
+export function convertSpeed(speed: Speed, targetUnit:string) {
 	// Convert speed to meters per second
 	let mps:number
 	if (speed.unit === "m/s") {

@@ -1,5 +1,6 @@
 import { Position } from "./interfaces";
 import * as geolib from "geolib";
+import { lowpassfilter } from "./filters";
 
 interface NewFrame {
 	position: Position,
@@ -21,7 +22,7 @@ class Frame {
 		this.position = newFrame.position;
 		this.altitude = newFrame.altitude || 0;
 		this.frameTimestamp = Date.now();
-		this.positionTimestamp = newFrame.positionTimestamp;
+		this.positionTimestamp = newFrame.positionTimestamp || Date.now();
 
 		if (newFrame.lastFrame) {
 			this.frameno = newFrame.lastFrame.frameno + 1 || 0;
@@ -31,6 +32,15 @@ class Frame {
 			this.frameno = 0;
 			this.totalDistance = 0;
 		}
+	}
+
+	get timestamp() {
+		return this.positionTimestamp || this.frameTimestamp;
+	}
+
+	projectPosition(speed: number, bearing: number, time: number) {
+		const elapsed = (time - this.timestamp) / 1000;
+		return geolib.computeDestinationPoint(this.position, speed * elapsed, bearing);
 	}
 }
 
@@ -49,12 +59,20 @@ export class Tracker {
 		this.meta = meta;
 	}
 
-	addFrame(newFrame: NewFrame) {
+	record(newFrame: NewFrame) {
+		// Check if the new frame is a duplicate, if so, ignore it
+		if (this.currentFrame?.positionTimestamp !== undefined) {
+			if (this.currentFrame?.positionTimestamp === newFrame?.positionTimestamp) return this.currentFrame
+		}
+
 		const frame = new Frame({
 			...newFrame,
 			lastFrame: this.currentFrame
 		})
+
 		this.frames.push(frame)
+
+		return this.currentFrame
 	}
 
 	get currentFrame() {
@@ -65,26 +83,79 @@ export class Tracker {
 		return this.frames[this.frames.length - 2]
 	}
 
+	calcSpeed(frame1: Frame, frame2: Frame) {
+		return geolib.getSpeed({
+			...frame1.position,
+			time: frame1.positionTimestamp || frame1.frameTimestamp
+		},{
+			...frame2.position,
+			time: frame2.positionTimestamp || frame2.frameTimestamp
+		})
+	}
+
 	get speed() {
 		if (this.frames.length < 2) {
 			return 0
 		}
-		
-		return geolib.getSpeed({
-			...this.lastFrame.position,
-			time: this.lastFrame.positionTimestamp || this.lastFrame.frameTimestamp
-		},{
-			...this.currentFrame.position,
-			time: this.currentFrame.positionTimestamp || this.currentFrame.frameTimestamp
-		})
+
+		return this.calcSpeed(this.lastFrame, this.currentFrame)
 	}
+
+	calcBearing(frame1: Frame, frame2: Frame) {
+		return geolib.getRhumbLineBearing(frame1.position, frame2.position)
+	}
+
 	get bearing() {
 		if (this.frames.length < 2) {
 			return 0
 		}
-		return geolib.getRhumbLineBearing(this.lastFrame.position, this.currentFrame.position)
+
+		return this.calcBearing(this.lastFrame, this.currentFrame)
 	}
 
-	getInterpolatedPosition() {}
-	getTotalDistanceTravelled() {}
+	filteredSpeed(alpha: number, sampleCount: number) {
+		const samples = this.frames.slice(-sampleCount)
+
+		const speeds = samples.map((frame, index) => {
+			if (index === 0) return 0
+			return this.calcSpeed(samples[index - 1], frame)
+		})
+
+		const filteredSpeeds = lowpassfilter(speeds, alpha)
+
+		return filteredSpeeds[filteredSpeeds.length - 1]
+	}
+
+	filteredBearing(alpha: number, sampleCount: number) {
+		const samples = this.frames.slice(-sampleCount)
+
+		const bearings = samples.map((frame, index) => {
+			if (index === 0) return 0
+			return this.calcBearing(samples[index - 1], frame)
+		})
+
+		const filteredBearings = lowpassfilter(bearings, alpha)
+
+		return filteredBearings[filteredBearings.length - 1]
+	}
+
+	get timeSinceLastSample() {
+		if (this.frames.length < 1) {
+			return 0
+		}
+		const timestamp = this.currentFrame.positionTimestamp || this.currentFrame.frameTimestamp
+		return Date.now() - timestamp
+	}
+
+	get totalDistanceTravelled() {
+		return this.currentFrame.totalDistance
+	}
+
+	projectPosition(time: number) {
+		if (this.frames.length < 2) {
+			return this.currentFrame.position
+		}
+
+		return this.currentFrame.projectPosition(this.speed, this.bearing, time)
+	}
 }

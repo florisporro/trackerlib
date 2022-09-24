@@ -1,4 +1,4 @@
-import { Speed, Distance } from "./interfaces"
+import { Speed } from "./interfaces"
 
 export function convertSpeed(speed: Speed, targetUnit:string) {
 	// Convert speed to meters per second

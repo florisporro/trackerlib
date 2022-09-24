@@ -10,7 +10,7 @@ describe("Filters", () => {
 		expect(result[result.length - 1]).to.equal(50)
 	});
 
-	it('should return smoothed value', function() {
+	it('returns a smoothed value with alpha set less than 1', function() {
 		const result = lowpassfilter([10,10,10,10,10,10,10,10,10,20], 0.2);
 		expect(result[result.length - 1]).to.equal(12)
 	});

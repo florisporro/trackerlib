@@ -3,7 +3,7 @@ export function lowpassfilter(values: number[], alpha: number) {
 	for (let i = 1; i < values.length; i++){
 			const currentValue = values[i];
 			value += (currentValue - value) * alpha;
-			values[i] = Math.round(value);
+			values[i] = value;
 	}
 	return values;
 }

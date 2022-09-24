@@ -1,6 +1,7 @@
-import { Position } from "./interfaces";
+import { Position, Speed } from "./interfaces";
 import * as geolib from "geolib";
 import { lowpassfilter } from "./filters";
+import { convertSpeed } from "./units";
 
 interface NewFrame {
 	position: Position,
@@ -38,9 +39,10 @@ class Frame {
 		return this.positionTimestamp || this.frameTimestamp;
 	}
 
-	projectPosition(speed: number, bearing: number, time: number) {
+	projectPosition(speed: Speed, bearing: number, time: number): Position {
 		const elapsed = (time - this.timestamp) / 1000;
-		return geolib.computeDestinationPoint(this.position, speed * elapsed, bearing);
+		const convertedSpeed = convertSpeed(speed, "m/s");
+		return geolib.computeDestinationPoint(this.position, convertedSpeed * elapsed, bearing);
 	}
 }
 
@@ -83,22 +85,39 @@ export class Tracker {
 		return this.frames[this.frames.length - 2]
 	}
 
-	calcSpeed(frame1: Frame, frame2: Frame) {
-		return geolib.getSpeed({
+	calcSpeed(frame1: Frame, frame2: Frame): Speed {
+		const speed = geolib.getSpeed({
 			...frame1.position,
 			time: frame1.positionTimestamp || frame1.frameTimestamp
 		},{
 			...frame2.position,
 			time: frame2.positionTimestamp || frame2.frameTimestamp
 		})
+		return {
+			value: speed,
+			unit: "m/s"
+		}
 	}
 
-	get speed() {
+	get speed(): Speed {
 		if (this.frames.length < 2) {
-			return 0
+			return {
+				unit: "m/s",
+				value: 0
+			}
 		}
 
 		return this.calcSpeed(this.lastFrame, this.currentFrame)
+	}
+
+	get speeds(): Speed[] {		
+		const speeds = this.frames.map((frame, index) => {
+			if (index === 0) return { value: 0, unit: "m/s" }
+			return this.calcSpeed(this.frames[index - 1], frame)
+		})
+
+		// Skip the first speed, which is always 0
+		return speeds.slice(1)
 	}
 
 	calcBearing(frame1: Frame, frame2: Frame) {
@@ -113,20 +132,18 @@ export class Tracker {
 		return this.calcBearing(this.lastFrame, this.currentFrame)
 	}
 
-	filteredSpeed(alpha: number, sampleCount: number) {
-		const samples = this.frames.slice(-sampleCount)
+	filterSpeed(alpha: number, sampleCount: number) {
+		if (sampleCount > this.speeds.length) {
+			throw new Error("Sample count is greater than the number speeds calculable")
+		}
+		const samples = this.speeds.slice(-sampleCount).map(speed => speed.value)
 
-		const speeds = samples.map((frame, index) => {
-			if (index === 0) return 0
-			return this.calcSpeed(samples[index - 1], frame)
-		})
-
-		const filteredSpeeds = lowpassfilter(speeds, alpha)
+		const filteredSpeeds = lowpassfilter(samples, alpha)
 
 		return filteredSpeeds[filteredSpeeds.length - 1]
 	}
 
-	filteredBearing(alpha: number, sampleCount: number) {
+	filterBearing(alpha: number, sampleCount: number) {
 		const samples = this.frames.slice(-sampleCount)
 
 		const bearings = samples.map((frame, index) => {

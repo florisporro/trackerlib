@@ -64,9 +64,9 @@ describe("Tracker", () => {
 
 	it("calculates speed given two frames", () => {
 		// Distance is roughly 1110m so speed is slightly above
-		// 60 kph
-		expect(tracker.speed * 3.6).to.be.above(60)
-		expect(tracker.speed * 3.6).to.be.below(70)
+		// 18 meters per second
+		expect(tracker.speed.value).to.be.above(18)
+		expect(tracker.speed.value).to.be.below(19)
 	})
 
 	it("calculates bearing given two frames", () => {
@@ -89,5 +89,31 @@ describe("Tracker", () => {
 		expect(projectedPosition.latitude).to.be.above(0.02)
 		expect(projectedPosition.latitude).to.be.below(0.04)
 		expect(projectedPosition.longitude).to.equal(25.0)
+	})
+
+	it("returns an array of speeds", () => {
+		expect(tracker.speeds.length).to.equal(2)
+	})
+
+	it("at a constant speed, filtered speed remains constant too", () => {
+		const filteredSpeed = tracker.filterSpeed(0.2, 2)
+		expect(filteredSpeed).to.equal(18.55)
+	})
+
+	it("at sudden acceleration, filtered speed increases by the difference times the factor", () => {
+		tracker.record({
+			position: {
+				latitude: 0.04,
+				longitude: 25.0
+			},
+			positionTimestamp: Date.now() + 180000
+		})
+
+		const difference = 18.55 * 0.2
+
+		const expectedSpeed = 18.55 + difference
+		const filteredSpeed = tracker.filterSpeed(0.2, 2)
+		
+		expect(filteredSpeed).to.equal(expectedSpeed)
 	})
 })

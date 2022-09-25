@@ -4,6 +4,7 @@ import "mocha";
 import * as geolib from "geolib";
 
 import { Route, RoutePoint } from "./route";
+import { Tracker } from "./tracker";
 
 describe("Route", () => {
 	let route: Route, start: RoutePoint, point1: RoutePoint, finish: RoutePoint;
@@ -60,5 +61,67 @@ describe("Route", () => {
 			const sorted2 = route.sortByDistanceTravelled(geolib.getDistance(start.position, point1.position));
 			expect(sorted2[0].name).to.equal("Point1");
 		});
+
+		it("returns the closest route point", () => {
+			const closest = route.getClosestRoutePoint({ latitude: 0.02, longitude: 25 });
+			expect(closest.name).to.equal("Finish");
+		});
+	})
+
+	describe("interacting with a tracker", () => {
+		let tracker: Tracker;
+
+		beforeEach(() => {
+			tracker = new Tracker(0, "Test Tracker");
+			tracker.record({
+				position: {
+					latitude: 0.0,
+					longitude: 25.0
+				}
+			})
+	
+			tracker.record({
+				position: {
+					latitude: 0.007,
+					longitude: 25.0
+				},
+				positionTimestamp: Date.now() + 60000
+			})
+		});
+
+		it("returns the closest route point to a tracker", () => {
+			const closest = route.getClosestRoutePoint(tracker.currentFrame.position);
+			expect(closest.name).to.equal("Point1");
+		});
+
+		it("returns the next route point for a tracker when just before a point", () => {
+			const next = route.getNextRoutePointForTracker(tracker);
+			expect(next?.name).to.equal("Point1");
+		});
+
+		it("returns the next route point for a tracker when exactly on a point", () => {
+			tracker.record({
+				position: {
+					latitude: 0.01,
+					longitude: 25.0
+				},
+				positionTimestamp: Date.now() + 90000
+			})
+			const next = route.getNextRoutePointForTracker(tracker);
+			expect(next?.name).to.equal("Finish");
+		});
+
+		it("returns the next route point for a tracker when just past a point", () => {
+			tracker.record({
+				position: {
+					latitude: 0.014,
+					longitude: 25.0
+				},
+				positionTimestamp: Date.now() + 100000
+			})
+			const next = route.getNextRoutePointForTracker(tracker);
+			expect(next?.name).to.equal("Finish");
+		});
+
 	})
 });

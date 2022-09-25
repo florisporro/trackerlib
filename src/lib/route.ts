@@ -1,5 +1,6 @@
 import * as geolib from "geolib"
 import { Position } from "./interfaces"
+import { Tracker } from "./tracker"
 
 export class RoutePoint {
 	readonly id: number;
@@ -26,6 +27,14 @@ export class RoutePoint {
 		} else {
 			this.id = 0
 		}
+	}
+
+	getDistance(position: Position): number {
+		return geolib.getDistance(this.position, position)
+	}
+
+	getBearing(position: Position): number {
+		return geolib.getRhumbLineBearing(this.position, position)
 	}
 }
 
@@ -68,8 +77,8 @@ export class Route {
 		})
 	}
 
-	sortByDistanceTravelled(distance: number): RoutePoint[] {
-		return Route.sortByDistanceTravelled(this.routePoints, distance)
+	getClosestRoutePoint(position: Position): RoutePoint {
+		return this.sortByDistanceFromPosition(position)[0]
 	}
 
 	static sortByDistanceTravelled(route: RoutePoint[], distance: number): RoutePoint[] {
@@ -77,6 +86,50 @@ export class Route {
 			return Math.abs(distance-pointA.totalDistance) - Math.abs(distance-pointB.totalDistance)
 		})
 	}
+
+	sortByDistanceTravelled(distance: number): RoutePoint[] {
+		return Route.sortByDistanceTravelled(this.routePoints, distance)
+	}
+
+	getRoutePointAtDistance(distance: number): RoutePoint {
+		return this.sortByDistanceTravelled(distance)[0]
+	}
+
+	getNextRoutePointForTracker(tracker: Tracker): RoutePoint | undefined {
+		const currentFrame = tracker.currentFrame
+		const lastFrame = tracker.lastFrame
+
+		// For the current and last frame, get the distance to the nearest route point
+		const currentFrameClosestRoutePoint = this.getClosestRoutePoint(currentFrame.position)
+		const currentFrameDistance = currentFrameClosestRoutePoint.getDistance(currentFrame.position)
+		const lastFrameDistance = currentFrameClosestRoutePoint.getDistance(lastFrame.position)
+		const currentFrameDistanceTravelled = currentFrameClosestRoutePoint.totalDistance
+		const nextRoutePoint = this.routePoints.find(routePoint => routePoint.id === currentFrameClosestRoutePoint.id + 1)
+
+		// If the distance is exactly zero, then we're on the route point and should
+		// return the next route poinr
+		if (currentFrameDistance === 0) {
+			return nextRoutePoint
+		}
+
+		// If the current frame is closer to the route point than the last frame, we are approaching the closest route point
+		// and should return it as the next route point for our tracker
+		if (currentFrameDistance < lastFrameDistance) {
+			console.log("Approaching route point")
+			return currentFrameClosestRoutePoint
+		}
+
+		// If the current frame is further from the route point than the last frame, we are moving away from the route point
+		// and should return the next route point ordered by distance travelled
+		if (currentFrameDistance > lastFrameDistance) {
+			console.log("Moving away from route point")
+			return nextRoutePoint
+		}
+
+		return currentFrameClosestRoutePoint
+	}
+
+	
 
 	// getNearestRoutePoint(lastFrame: Frame): RoutePoint {
 	// 	// Sort the route to nearest points
@@ -89,10 +142,6 @@ export class Route {
 
 	// 	return sortedByDistanceTravelled[0]
 	// }
-
-	static distanceToRoutePoint(routePoint: RoutePoint, position: Position): number {
-		return geolib.getDistance(routePoint.position, position)
-	}
 }
 
 // // 3. The two closest points should form the line we are currently on

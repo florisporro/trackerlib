@@ -85,6 +85,14 @@ export class Tracker {
 		return this.frames[this.frames.length - 2]
 	}
 
+	get position() {
+		return this.currentFrame.position
+	}
+
+	get projectedPosition() {
+		return this.projectPosition(Date.now())
+	}
+
 	calcSpeed(frame1: Frame, frame2: Frame): Speed {
 		const speed = geolib.getSpeed({
 			...frame1.position,

@@ -120,7 +120,18 @@ describe("Route", () => {
 			const calculatedPoint = route.getNearestPointOnRouteLine(pointOffRouteLine);
 			const distanceFromTarget = geolib.getDistance(target, calculatedPoint);
 			
-			expect(distanceFromTarget).to.be.lessThan(5);
+			expect(distanceFromTarget).to.be.below(5);
+		});
+
+		it("calculates total distance along route", () => {
+			const pointOffRouteLine = { latitude: 0.015, longitude: 25.03 }
+			const target = { latitude: 0.015, longitude: 25 }
+			
+			const distance = geolib.getDistance(start.position, target);
+			const calculatedDistance = route.getDistanceAlongRoute(pointOffRouteLine);
+			
+			expect(distance - calculatedDistance).to.be.below(5);
+			expect(distance - calculatedDistance).to.be.above(-5);
 		});
 	})
 });

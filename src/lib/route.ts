@@ -148,4 +148,13 @@ export class Route {
 
 		return target
 	}
+
+	getDistanceAlongRoute(position: Position): number {
+		const nearestPointOnRouteLine = this.getNearestPointOnRouteLine(position)
+		const nearestSegment = this.sortByNearestPathSegment(position)[0]
+		const distanceToNearestRoutePoint = geolib.getDistance(nearestPointOnRouteLine, nearestSegment[0].position)
+		const distanceAlongRoute = nearestSegment[0].totalDistance + distanceToNearestRoutePoint
+
+		return distanceAlongRoute
+	}
 }

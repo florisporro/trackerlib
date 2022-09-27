@@ -66,62 +66,61 @@ describe("Route", () => {
 			const closest = route.getClosestRoutePoint({ latitude: 0.02, longitude: 25 });
 			expect(closest.name).to.equal("Finish");
 		});
+
+		it("accurately sorts nearest path segment when just before a point", () => {
+			const segments = route.sortByNearestPathSegment({ latitude: 0.009, longitude: 24.9 });
+			expect(segments[0][0].name).to.equal("Start");
+			expect(segments[0][1].name).to.equal("Point1");
+		});
+
+		it("accurately sorts nearest path segment when just past a point", () => {
+			const segments = route.sortByNearestPathSegment({ latitude: 0.011, longitude: 24.9 });
+			expect(segments[0][0].name).to.equal("Point1");
+			expect(segments[0][1].name).to.equal("Finish");
+		});
+
+		it("accurately sorts nearest path segment when just before the last point", () => {
+			const segments = route.sortByNearestPathSegment({ latitude: 0.019, longitude: 24.0 });
+			expect(segments[0][0].name).to.equal("Point1");
+			expect(segments[0][1].name).to.equal("Finish");
+		});
 	})
 
-	describe("interacting with a tracker", () => {
-		let tracker: Tracker;
-
-		beforeEach(() => {
-			tracker = new Tracker(0, "Test Tracker");
-			tracker.record({
-				position: {
-					latitude: 0.0,
-					longitude: 25.0
-				}
-			})
-	
-			tracker.record({
-				position: {
-					latitude: 0.007,
-					longitude: 25.0
-				},
-				positionTimestamp: Date.now() + 60000
-			})
+	describe("calculating the nearest point on the route line", () => {
+		it("accurately finds the route from just past the first point", () => {
+			const pointOffRouteLine = { latitude: 0.001, longitude: 25.01 }
+			const target = { latitude: 0.001, longitude: 25 }
+			const calculatedPoint = route.getNearestPointOnRouteLine(pointOffRouteLine);
+			const distanceFromTarget = geolib.getDistance(target, calculatedPoint);
+			
+			expect(distanceFromTarget).to.be.lessThan(5);
 		});
 
-		it("returns the closest route point to a tracker", () => {
-			const closest = route.getClosestRoutePoint(tracker.currentFrame.position);
-			expect(closest.name).to.equal("Point1");
+		it("accurately finds the route from halfway to the first point", () => {
+			const pointOffRouteLine = { latitude: 0.005, longitude: 24.50 }
+			const target = { latitude: 0.005, longitude: 25 }
+			const calculatedPoint = route.getNearestPointOnRouteLine(pointOffRouteLine);
+			const distanceFromTarget = geolib.getDistance(target, calculatedPoint);
+			
+			expect(distanceFromTarget).to.be.lessThan(5);
 		});
 
-		it("returns the next route point for a tracker when just before a point", () => {
-			const next = route.getNextRoutePointForTracker(tracker);
-			expect(next?.name).to.equal("Point1");
+		it("accurately finds the route from just beyond the second point", () => {
+			const pointOffRouteLine = { latitude: 0.012, longitude: 25.55 }
+			const target = { latitude: 0.012, longitude: 25 }
+			const calculatedPoint = route.getNearestPointOnRouteLine(pointOffRouteLine);
+			const distanceFromTarget = geolib.getDistance(target, calculatedPoint);
+			
+			expect(distanceFromTarget).to.be.lessThan(5);
 		});
 
-		it("returns the next route point for a tracker when exactly on a point", () => {
-			tracker.record({
-				position: {
-					latitude: 0.01,
-					longitude: 25.0
-				},
-				positionTimestamp: Date.now() + 90000
-			})
-			const next = route.getNextRoutePointForTracker(tracker);
-			expect(next?.name).to.equal("Finish");
+		it("accurately finds the route from just before the finish", () => {
+			const pointOffRouteLine = { latitude: 0.019, longitude: 25.03 }
+			const target = { latitude: 0.019, longitude: 25 }
+			const calculatedPoint = route.getNearestPointOnRouteLine(pointOffRouteLine);
+			const distanceFromTarget = geolib.getDistance(target, calculatedPoint);
+			
+			expect(distanceFromTarget).to.be.lessThan(5);
 		});
-
-		it("returns the next route point for a tracker when just past a point", () => {
-			tracker.record({
-				position: {
-					latitude: 0.014,
-					longitude: 25.0
-				},
-				positionTimestamp: Date.now() + 100000
-			})
-			const next = route.getNextRoutePointForTracker(tracker);
-			expect(next?.name).to.equal("Finish");
-		});
-
 	})
 });

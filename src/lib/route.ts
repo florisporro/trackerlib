@@ -95,73 +95,57 @@ export class Route {
 		return this.sortByDistanceTravelled(distance)[0]
 	}
 
-	getNextRoutePointForTracker(tracker: Tracker): RoutePoint | undefined {
-		const currentFrame = tracker.currentFrame
-		const lastFrame = tracker.lastFrame
+	sortByNearestPathSegment(position: Position): RoutePoint[][] {
+		// Find the nearest path segment, consisting of two consecutive RoutePoints
 
-		// For the current and last frame, get the distance to the nearest route point
-		const currentFrameClosestRoutePoint = this.getClosestRoutePoint(currentFrame.position)
-		const currentFrameDistance = currentFrameClosestRoutePoint.getDistance(currentFrame.position)
-		const lastFrameDistance = currentFrameClosestRoutePoint.getDistance(lastFrame.position)
-		const currentFrameDistanceTravelled = currentFrameClosestRoutePoint.totalDistance
-		const nextRoutePoint = this.routePoints.find(routePoint => routePoint.id === currentFrameClosestRoutePoint.id + 1)
+		const segments = this.routePoints.map((routePoint, index) => {
+			const nextRoutePoint = this.routePoints[index + 1]
+			if (nextRoutePoint) {
+				return [routePoint, nextRoutePoint]
+			}
+		}).filter(segment => segment !== undefined) as RoutePoint[][]
 
-		// If the distance is exactly zero, then we're on the route point and should
-		// return the next route poinr
-		if (currentFrameDistance === 0) {
-			return nextRoutePoint
-		}
+		const sortedSegments = segments.sort((segmentA, segmentB) => {
+			if (!segmentA || !segmentB) {
+				return 0
+			}
+			const segmentAdistance = geolib.getDistanceFromLine(position, segmentA[0].position, segmentA[1].position)
+			const segmentBdistance = geolib.getDistanceFromLine(position, segmentB[0].position, segmentB[1].position)
 
-		// If the current frame is closer to the route point than the last frame, we are approaching the closest route point
-		// and should return it as the next route point for our tracker
-		if (currentFrameDistance < lastFrameDistance) {
-			console.log("Approaching route point")
-			return currentFrameClosestRoutePoint
-		}
+			return segmentAdistance - segmentBdistance
+		})
 
-		// If the current frame is further from the route point than the last frame, we are moving away from the route point
-		// and should return the next route point ordered by distance travelled
-		if (currentFrameDistance > lastFrameDistance) {
-			console.log("Moving away from route point")
-			return nextRoutePoint
-		}
-
-		return currentFrameClosestRoutePoint
+		return sortedSegments
 	}
 
-	
+	getNextRoutePoint(position: Position): RoutePoint {
+		const sortedSegments = this.sortByNearestPathSegment(position)
+		return sortedSegments[0][1]
+	}
 
-	// getNearestRoutePoint(lastFrame: Frame): RoutePoint {
-	// 	// Sort the route to nearest points
-	// 	const sortedBynearest = Route.sortByDistanceFromPosition(this.routePoints, lastFrame.position)
+	getNearestPointOnRouteLine(position: Position): Position {
+		// Sort segments by nearest to position
+		const sortedSegments = this.sortByNearestPathSegment(position)
+		const nearestSegment = sortedSegments[0]
 
-	// 	// To prevent skipping ahead in the route, we sort again, this time
-	// 	// 		we compare the actual total distance travelled to the route distance travelled.
-	// 	// 		Whatever point has the lowest delta is our current route point.
-	// 	const sortedByDistanceTravelled = Route.sortByDistanceTravelled(sortedBynearest, lastFrame.totalDistanceTravelled)
+		// Get the distance from the segment line
+		const distanceFromRouteLine = geolib.getDistanceFromLine(position, nearestSegment[0].position, nearestSegment[1].position)
 
-	// 	return sortedByDistanceTravelled[0]
-	// }
+		// Get the distance to the next point on the segment line
+		const distanceToNextSegmentPoint = geolib.getDistance(position, nearestSegment[1].position)
+
+		// Use pythagoras to get distance from the closest route point
+		const AC2 = Math.pow(distanceToNextSegmentPoint,2) || 0
+		const BC2 = Math.pow(distanceFromRouteLine,2) || 0
+		const AB2 = Math.sqrt(AC2 - BC2)
+		const distanceToNextSegmentPointAlongSegment = AB2
+
+		// Get the bearing on our segment from the next to the previous point
+		const bearing = geolib.getGreatCircleBearing(nearestSegment[1].position, nearestSegment[0].position)
+
+		// Now work back to get the final position on the route line)
+		const target = geolib.computeDestinationPoint(nearestSegment[1].position, distanceToNextSegmentPointAlongSegment, bearing)
+
+		return target
+	}
 }
-
-// // 3. The two closest points should form the line we are currently on
-// const expectedPath = [
-// 	sortedByDistanceTravelled[0].position,
-// 	sortedByDistanceTravelled[1].position
-// ]
-
-// // 4. Now we get the minimum distance from that line, that's one side of our
-// // 		triangle
-// const distanceFromRouteLine = geolib.getDistanceFromLine(lastFrame.position, expectedPath[0].position, expectedPath[1].position)
-
-// // 5. Now get the actual distance to the closest route point
-// const distanceToClosestPoint = geolib.getDistance(lastFrame.position, sortedByDistanceTravelled[0].position)
-
-// // 6. Use pythagoras to get distance from the closest route point
-// const distanceFromClosestPointOnRoute = Math.sqrt(distanceFromRouteLine^2 - distanceToClosestPoint^2)
-
-// // 7. Get the bearing on our line
-// const bearing = geolib.getRhumbLineBearing(expectedPath[0], expectedPath[1])
-
-// // 8. Now get the final position
-// return geolib.computeDestinationPoint(expectedPath[0], distanceFromClosestPointOnRoute, bearing)

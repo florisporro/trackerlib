@@ -57,6 +57,7 @@ tracker = new Tracker("Test Tracker", "Car", {
 With the tracker created, record some frames on it:
 
 ```js
+// Record our first position, set the timestamp to be 2 minutes (120000ms) in the past
 tracker.record({
 	position: {
 		latitude: 0.0,
@@ -65,7 +66,7 @@ tracker.record({
 	positionTimestamp: Date.now() - 120000,
 });
 
-// Record another position, set the timestamp to be 60 seconds into the future
+// Record another position, set the timestamp to be 60 seconds in the past
 tracker.record({
 	position: {
 		latitude: 0.01,

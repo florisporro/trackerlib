@@ -1,7 +1,7 @@
 {
 	"name": "trackerlib",
-	"version": "1.0.0",
-	"description": "",
+	"version": "0.0.1",
+	"description": "Tools for processing of GPS data and working with routes.",
 	"main": "index.js",
 	"scripts": {
 		"start": "npm run build && node build/index.js",

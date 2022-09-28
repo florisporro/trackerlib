@@ -48,13 +48,11 @@ class Frame {
 
 export class Tracker {
 	name: string;
-	id: number;
 	type?: string;
 	frames: Array<Frame>
 	meta?: any;
 
-	constructor(id: number, name: string, type?: string, meta?: any) {
-		this.id = id;
+	constructor(name: string, type?: string, meta?: any) {
 		this.name = name;
 		this.type = type;
 		this.frames = [];

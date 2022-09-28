@@ -10,7 +10,7 @@ describe("Tracker", () => {
 	let tracker: Tracker;
 
 	beforeEach(() => {
-		tracker = new Tracker(0, "Test Tracker", "Car", {
+		tracker = new Tracker("Test Tracker", "Car", {
 			team: "Test Team"
 		});
 
@@ -28,6 +28,8 @@ describe("Tracker", () => {
 			},
 			positionTimestamp: Date.now() + 60000
 		})
+
+		console.log(tracker.calcBearing(tracker.lastFrame, tracker.currentFrame))
 
 		tracker.record({
 			position: {
@@ -47,7 +49,6 @@ describe("Tracker", () => {
 	});
 
 	it("creates a new tracker", () => {
-		expect(tracker.id).to.equal(0);
 		expect(tracker.name).to.equal("Test Tracker");
 		expect(tracker.type).to.equal("Car");
 		expect(tracker?.meta?.team).to.equal("Test Team");

@@ -2,15 +2,22 @@
 	"name": "trackerlib",
 	"version": "0.0.1",
 	"description": "Tools for processing of GPS data and working with routes.",
-	"main": "index.js",
+	"main": "./build/cjs/index.js",
+	"module": "./build/esm/index.js",
+	"files": [
+		"buildnpx pkgfiles/"
+	],
 	"scripts": {
 		"start": "npm run build && node build/index.js",
 		"start:dev": "nodemon",
 		"lint": "prettier --list-different 'src/*.ts'",
-		"build": "rimraf ./build && tsc",
-		"test": "mocha -r ts-node/register src/**/*.spec.ts",
+		"build": "rimraf ./build; npm run build:esm; npm run build:cjs",
+		"build:esm": "tsc -p tsconfig.json",
+		"build:cjs": "tsc -p tsconfig-cjs.json",
+		"test": "mocha -loader=ts-node/esm src/**/*.spec.ts",
 		"test:watch": "TS_NODE_TRANSPILE_ONLY=true NODE_ENV=test mocha --require ts-node/register --watch-extensions ts --watch --watch-files src 'src/**/**.spec.ts'",
-		"test:dev": "mocha --watch -r ts-node/register --watch-extensions ts src/**/*.spec.ts"
+		"test:dev": "mocha --watch -r ts-node/register --watch-extensions ts src/**/*.spec.ts",
+		"prepublishOnly": "npm run build"
 	},
 	"keywords": [],
 	"author": "",

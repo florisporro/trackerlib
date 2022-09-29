@@ -5,7 +5,7 @@
 	"main": "./build/cjs/index.js",
 	"module": "./build/esm/index.js",
 	"files": [
-		"buildnpx pkgfiles/"
+		"build/"
 	],
 	"scripts": {
 		"start": "npm run build && node build/index.js",

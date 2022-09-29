@@ -54,7 +54,7 @@ export class Route {
 	addRoutePoint(routePoint: newRoutePoint) {
 		const lastRoutePoint = this.routePoints[this.routePoints.length - 1]
 		const newRoutePoint = new RoutePoint(routePoint.position, routePoint.altitude, routePoint.name, lastRoutePoint)
-		this.routePoints.push(newRoutePoint)
+		this.routePoints = [...this.routePoints, newRoutePoint]
 		return newRoutePoint
 	}
 

@@ -70,7 +70,7 @@ export class Tracker {
 			lastFrame: this.currentFrame
 		})
 
-		this.frames.push(frame)
+		this.frames = [...this.frames, frame]
 
 		return this.currentFrame
 	}

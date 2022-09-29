@@ -21,7 +21,7 @@ export class RoutePoint {
 
 		if (lastRoutePoint) {
 			this.id = lastRoutePoint.id + 1 || 0;
-			this.bearing = geolib.getRhumbLineBearing(position, lastRoutePoint.position)
+			this.bearing = geolib.getRhumbLineBearing(lastRoutePoint.position, position)
 			this.distance = geolib.getDistance(position, lastRoutePoint.position)
 			this.totalDistance = lastRoutePoint.totalDistance + this.distance
 		} else {

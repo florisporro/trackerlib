@@ -138,7 +138,7 @@ export class Tracker {
 		return this.calcBearing(this.lastFrame, this.currentFrame)
 	}
 
-	filterSpeed(alpha: number, sampleCount: number) {
+	filterSpeed(alpha: number, sampleCount: number): Speed {
 		if (sampleCount > this.speeds.length) {
 			throw new Error("Sample count is greater than the number speeds calculable")
 		}
@@ -146,7 +146,7 @@ export class Tracker {
 
 		const filteredSpeeds = lowpassfilter(samples, alpha)
 
-		return filteredSpeeds[filteredSpeeds.length - 1]
+		return { value: filteredSpeeds[filteredSpeeds.length - 1], unit: "m/s" }
 	}
 
 	filterBearing(alpha: number, sampleCount: number) {

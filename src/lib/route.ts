@@ -118,6 +118,11 @@ export class Route {
 		return sortedSegments
 	}
 
+	getCurrentSegment(position: Position): RoutePoint[] {
+		const sortedSegments = this.sortByNearestPathSegment(position)
+		return sortedSegments[0]
+	}
+
 	getNextRoutePoint(position: Position): RoutePoint {
 		const sortedSegments = this.sortByNearestPathSegment(position)
 		return sortedSegments[0][1]
@@ -156,5 +161,10 @@ export class Route {
 		const distanceAlongRoute = nearestSegment[0].totalDistance + distanceToNearestRoutePoint
 
 		return distanceAlongRoute
+	}
+
+	getAllFollowingRoutePoints(routePoint: RoutePoint): RoutePoint[] {
+		const index = this.routePoints.indexOf(routePoint)
+		return this.routePoints.slice(index)
 	}
 }

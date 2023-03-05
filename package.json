@@ -1,6 +1,6 @@
 {
 	"name": "trackerlib",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "Tools for processing of GPS data and working with routes.",
 	"main": "./build/cjs/index.js",
 	"module": "./build/esm/index.js",

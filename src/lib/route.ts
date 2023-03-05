@@ -1,6 +1,5 @@
 import * as geolib from "geolib"
-import { Position } from "./interfaces"
-import { Tracker } from "./tracker"
+import { Position } from "./units"
 
 export class RoutePoint {
 	readonly id: number;

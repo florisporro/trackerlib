@@ -26,8 +26,6 @@ describe("Tracker", () => {
 			positionTimestamp: Date.now() + 60000
 		})
 
-		console.log(tracker.calcBearing(tracker.lastFrame, tracker.currentFrame))
-
 		tracker.record({
 			position: {
 				latitude: 0.01,

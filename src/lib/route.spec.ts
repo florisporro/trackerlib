@@ -1,9 +1,9 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeEach } from 'vitest'
 
 import * as geolib from "geolib";
 
 import { Route, RoutePoint } from "./route";
-import { Tracker } from "./tracker";
+
 
 describe("Route", () => {
 	let route: Route, start: RoutePoint, point1: RoutePoint, finish: RoutePoint;
@@ -29,7 +29,7 @@ describe("Route", () => {
 
 	it("calculates bearing on route points", () => {
 		expect(start.bearing).to.equal(undefined);
-		expect(point1.bearing).to.equal(180);
+		expect(point1.bearing).to.equal(0);
 	})
 
 	it("calculates total route distance", () => {

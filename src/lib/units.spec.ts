@@ -4,7 +4,7 @@ import { describe, it, expect } from 'vitest'
 
 describe("Units", () => {
 	it("Converts from m/s to m/s", () => {
-		expect(new Speed(10, "m/s")).to.equal(10);
+		expect(new Speed(10, "m/s").mps).to.equal(10);
 	})
 	it("Converts from m/s to km/h", () => {
 		expect(new Speed(10, "m/s").kmh).to.equal(10 * 3.6);

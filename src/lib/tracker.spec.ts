@@ -63,8 +63,8 @@ describe("Tracker", () => {
 	it("calculates speed given two frames", () => {
 		// Distance is roughly 1110m so speed is slightly above
 		// 18 meters per second
-		expect(tracker.speed.value).to.be.above(18)
-		expect(tracker.speed.value).to.be.below(19)
+		expect(tracker.speed.mps).to.be.above(18)
+		expect(tracker.speed.mps).to.be.below(19)
 	})
 
 	it("calculates bearing given two frames", () => {
@@ -95,7 +95,7 @@ describe("Tracker", () => {
 
 	it("at a constant speed, filtered speed remains constant too", () => {
 		const filteredSpeed = tracker.filterSpeed(0.2, 2)
-		expect(filteredSpeed).to.equal(18.55)
+		expect(filteredSpeed.mps).to.equal(18.55)
 	})
 
 	it("at sudden acceleration, filtered speed increases by the difference times the factor", () => {
@@ -112,6 +112,6 @@ describe("Tracker", () => {
 		const expectedSpeed = 18.55 + difference
 		const filteredSpeed = tracker.filterSpeed(0.2, 2)
 		
-		expect(filteredSpeed).to.equal(expectedSpeed)
+		expect(filteredSpeed.mps).to.equal(expectedSpeed)
 	})
 })

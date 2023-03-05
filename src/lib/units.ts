@@ -1,44 +1,71 @@
-import { Speed } from "./interfaces"
+export class Position {
+	constructor(public latitude: number, public longitude: number) {}
+}
 
-export function convertSpeed(speed: Speed, targetUnit:string) {
-	// Convert speed to meters per second
-	let mps:number
-	if (speed.unit === "m/s") {
-		mps = speed.value
-	} else if (speed.unit === "km/h") {
-		mps = speed.value / 3.6
-	} else if (speed.unit === "m/h") {
-		mps = speed.value / 2.237
-	} else if (speed.unit === "kts") {
-		mps = speed.value / 1.944
-	} else {
-		throw new Error("Invalid speed unit")
+export class Speed {
+	speed: number;
+
+	constructor(value: number, unit: string = "m/s") {
+		if (unit === "m/s") {
+			this.speed = value
+		} else if (unit === "km/h") {
+			this.speed = value / 3.6
+		} else if (unit === "m/h") {
+			this.speed = value / 2.237
+		} else if (unit === "kts") {
+			this.speed = value / 1.944
+		} else {
+			throw new Error("Invalid speed unit")
+		}
 	}
 
-	// Convert to target unit
-	if (targetUnit === "m/s") {
-		return mps
-	} else if (targetUnit === "km/h") {
-		return mps * 3.6
-	} else if (targetUnit === "m/h") {
-		return mps * 2.237
-	} else if (targetUnit === "kts") {
-		return mps * 1.944
-	} else {
-		throw new Error("Invalid target speed unit")
+	get mps() {
+		return this.speed
+	}
+
+	get kmh() {
+		return this.speed * 3.6
+	}
+
+	get mph() {
+		return this.speed * 2.237
+	}
+
+	get kts() {
+		return this.speed * 1.944
 	}
 }
 
-export function convertDistance(distance: number, targetUnit: string) {
-	if (targetUnit === "m") {
-		return distance
-	} else if (targetUnit === "km") {
-		return distance / 1000
-	} else if (targetUnit === "mi") {
-		return distance / 1609.344
-	} else if (targetUnit === "nm") {
-		return distance / 1852
-	} else {
-		throw new Error("Invalid target distance unit")
+export class Distance {
+	distance: number;
+
+	constructor(public value: number, public unit: string = "m") {
+		if (unit === "m") {
+			this.distance = value
+		} else if (unit === "km") {
+			this.distance = value * 1000
+		} else if (unit === "mi") {
+			this.distance = value * 1609.344
+		} else if (unit === "nm") {
+			this.distance = value * 1852
+		} else {
+			throw new Error("Invalid distance unit")
+		}
+	}
+
+	get m() {
+		return this.distance
+	}
+
+	get km() {
+		return this.distance / 1000
+	}
+
+	get mi() {
+		return this.distance / 1609.344
+	}
+
+	get nm() {
+		return this.distance / 1852
 	}
 }

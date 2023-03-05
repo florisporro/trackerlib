@@ -1,7 +1,6 @@
-import { Position, Speed } from "./interfaces";
 import * as geolib from "geolib";
 import { lowpassfilter } from "./filters";
-import { convertSpeed } from "./units";
+import { Speed, Position } from "./units";
 
 interface NewFrame {
 	position: Position,
@@ -41,8 +40,7 @@ class Frame {
 
 	projectPosition(speed: Speed, bearing: number, time: number): Position {
 		const elapsed = (time - this.timestamp) / 1000;
-		const convertedSpeed = convertSpeed(speed, "m/s");
-		return geolib.computeDestinationPoint(this.position, convertedSpeed * elapsed, bearing);
+		return geolib.computeDestinationPoint(this.position, speed.mps * elapsed, bearing);
 	}
 }
 
@@ -99,18 +97,12 @@ export class Tracker {
 			...frame2.position,
 			time: frame2.positionTimestamp || frame2.frameTimestamp
 		})
-		return {
-			value: speed,
-			unit: "m/s"
-		}
+		return new Speed(speed)
 	}
 
 	get speed(): Speed {
 		if (this.frames.length < 2) {
-			return {
-				unit: "m/s",
-				value: 0
-			}
+			return new Speed(0)
 		}
 
 		return this.calcSpeed(this.lastFrame, this.currentFrame)
@@ -118,7 +110,7 @@ export class Tracker {
 
 	get speeds(): Speed[] {		
 		const speeds = this.frames.map((frame, index) => {
-			if (index === 0) return { value: 0, unit: "m/s" }
+			if (index === 0) return new Speed(0)
 			return this.calcSpeed(this.frames[index - 1], frame)
 		})
 
@@ -142,11 +134,11 @@ export class Tracker {
 		if (sampleCount > this.speeds.length) {
 			throw new Error("Sample count is greater than the number speeds calculable")
 		}
-		const samples = this.speeds.slice(-sampleCount).map(speed => speed.value)
+		const samples = this.speeds.slice(-sampleCount).map(speed => speed.mps)
 
 		const filteredSpeeds = lowpassfilter(samples, alpha)
 
-		return { value: filteredSpeeds[filteredSpeeds.length - 1], unit: "m/s" }
+		return new Speed(filteredSpeeds[filteredSpeeds.length - 1])
 	}
 
 	filterBearing(alpha: number, sampleCount: number) {

@@ -1,6 +1,6 @@
 import * as geolib from "geolib";
 import { lowpassfilter } from "./filters";
-import { Speed, Position } from "./units";
+import { Speed, Position, Distance } from "./units";
 
 interface NewFrame {
 	position: Position,
@@ -12,25 +12,23 @@ interface NewFrame {
 class Frame {
 	readonly frameno: number;
 	position: Position;
-	altitude: number;
 	frameTimestamp: number;
 	positionTimestamp?: number;
-	distance?: number;
-	totalDistance: number;
+	distance?: Distance;
+	totalDistance: Distance;
 
 	constructor(newFrame: NewFrame) {
-		this.position = newFrame.position;
-		this.altitude = newFrame.altitude || 0;
+		this.position = new Position(newFrame.position);
 		this.frameTimestamp = Date.now();
 		this.positionTimestamp = newFrame.positionTimestamp || Date.now();
 
 		if (newFrame.lastFrame) {
 			this.frameno = newFrame.lastFrame.frameno + 1 || 0;
-			this.distance = geolib.getDistance(newFrame.lastFrame.position, this.position);
-			this.totalDistance = newFrame.lastFrame.totalDistance + this.distance;
+			this.distance = new Distance(geolib.getDistance(newFrame.lastFrame.position, this.position));
+			this.totalDistance = new Distance(newFrame.lastFrame.totalDistance.m + this.distance.m);
 		} else {
 			this.frameno = 0;
-			this.totalDistance = 0;
+			this.totalDistance = new Distance(0);
 		}
 	}
 
@@ -40,7 +38,12 @@ class Frame {
 
 	projectPosition(speed: Speed, bearing: number, time: number): Position {
 		const elapsed = (time - this.timestamp) / 1000;
-		return geolib.computeDestinationPoint(this.position, speed.mps * elapsed, bearing);
+		return new Position(geolib.computeDestinationPoint(this.position, speed.mps * elapsed, bearing));
+	}
+
+	projectTotalDistance(speed: Speed, time: number): Distance {
+		const elapsed = (time - this.timestamp) / 1000;
+		return new Distance(this.totalDistance.m + speed.mps * elapsed);
 	}
 }
 
@@ -172,5 +175,13 @@ export class Tracker {
 		}
 
 		return this.currentFrame.projectPosition(this.speed, this.bearing, time)
+	}
+
+	projectTotalDistance(time: number) {
+		if (this.frames.length < 2) {
+			return new Distance(0)
+		}
+
+		return this.currentFrame.projectTotalDistance(this.speed, time)
 	}
 }

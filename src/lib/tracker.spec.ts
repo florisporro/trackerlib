@@ -71,8 +71,8 @@ describe("Tracker", () => {
 	})
 
 	it("keeps a running total of distance travelled", () => {
-		expect(tracker.currentFrame.totalDistance).to.be.above(2220)
-		expect(tracker.currentFrame.totalDistance).to.be.below(2230)
+		expect(tracker.currentFrame.totalDistance.m).to.be.above(2220)
+		expect(tracker.currentFrame.totalDistance.m).to.be.below(2230)
 	})
 
 	it("ignores recording of duplicate frames", () => {

@@ -5,13 +5,7 @@ import { Tracker } from "./tracker"
 // It can also be used to calculate relative values such as the distance between trackers,
 // the time to reach another tracker, etc.
 class TrackerList {
-	name: string
-	trackers: Tracker[]
-
-	constructor(name: string, trackers: Tracker[]) {
-		this.name = name
-		this.trackers = []
-	}
+	constructor(public name: string, public trackers: Tracker[]) {}
 
 	addTracker(tracker: Tracker) {
 		this.trackers = [...this.trackers, tracker]
@@ -23,19 +17,19 @@ class TrackerList {
 
 	sortByTotalDistanceTravelled() {
 		return this.trackers = this.trackers.sort((a, b) => {
-			const aDistance = a.frames[a.frames.length - 1].totalDistance
-			const bDistance = b.frames[b.frames.length - 1].totalDistance
+			const aDistance = a.currentFrame.totalDistance.m
+			const bDistance = b.currentFrame.totalDistance.m
 			return bDistance - aDistance
 		})
 	}
 
-	// sortByProjectedDistaceTravelled(time: number) {
-	// 	return this.trackers = this.trackers.sort((a, b) => {
-	// 		const aDistance = a.projectPosition(time)
-	// 		const bDistance = b.projectPosition(time)
-	// 		return bDistance - aDistance
-	// 	})
-	// }
+	sortByProjectedDistaceTravelled(time: number) {
+		return this.trackers = this.trackers.sort((a, b) => {
+			const aDistance = a.projectTotalDistance(time).m
+			const bDistance = b.projectTotalDistance(time).m
+			return bDistance - aDistance
+		})
+	}
 
 	// sortByProjectedDistanceTravelledAlongRoute() {}
 }

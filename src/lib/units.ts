@@ -1,5 +1,13 @@
 export class Position {
-	constructor(public latitude: number, public longitude: number) {}
+	longitude: number;
+	latitude: number;
+	altitude?: number;
+
+	constructor({ latitude, longitude, altitude }: Position) {
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.altitude = altitude;
+	}
 }
 
 export class Speed {

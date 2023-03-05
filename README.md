@@ -85,7 +85,7 @@ The options available are:
 	// The positionTimestamp can be optionally provided, and can be used when the GPS data comes with its own timestamp. When provided, the positionTimestamp is used for all calculations that require a time parameter, like speed.
 	positionTimestamp: number,
 	// Not currently in use, but reserved for future calculations
-  altitude: number
+	altitude: number
 }
 ```
 

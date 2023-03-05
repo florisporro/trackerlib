@@ -1,5 +1,4 @@
-import { expect } from "chai";
-import "mocha";
+import { describe, it, expect } from 'vitest'
 
 import * as geolib from "geolib";
 

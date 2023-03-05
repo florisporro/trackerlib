@@ -1,8 +1,7 @@
 
 import { lowpassfilter } from "./filters";
 
-import { expect } from "chai";
-import "mocha";
+import { describe, it, expect } from 'vitest'
 
 describe("Filters", () => {
 	it('returns the same value with alpha set to 1', function() {

@@ -1,7 +1,6 @@
-import { convertSpeed } from "./units";
+import { Speed } from "./units";
 
-import { expect } from "chai";
-import "mocha";
+import { describe, it, expect } from 'vitest'
 
 describe("Units", () => {
 	it("Converts from m/s to m/s", () => {

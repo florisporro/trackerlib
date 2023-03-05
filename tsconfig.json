@@ -4,6 +4,7 @@
 		"module": "ES2020",
 		"strict": true,
 		"esModuleInterop": true,
+		"moduleResolution": "node",
 		"forceConsistentCasingInFileNames": true,
 		"declaration": true,
 		"outDir": "./build/esm"

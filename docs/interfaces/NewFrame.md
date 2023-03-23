@@ -19,7 +19,7 @@
 
 #### Defined in
 
-[lib/tracker.ts:8](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L8)
+[lib/tracker.ts:8](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L8)
 
 ___
 
@@ -29,7 +29,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:10](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L10)
+[lib/tracker.ts:10](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L10)
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:7](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L7)
+[lib/tracker.ts:7](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L7)
 
 ___
 
@@ -49,4 +49,4 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:9](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L9)
+[lib/tracker.ts:9](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L9)

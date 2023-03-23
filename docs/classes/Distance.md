@@ -2,6 +2,12 @@
 
 # Class: Distance
 
+Distance class. Give it a distance and a unit, and it will convert it to other distance units.
+
+Units default to meters.
+
+**`Export`**
+
 ## Table of contents
 
 ### Constructors
@@ -36,7 +42,7 @@
 
 #### Defined in
 
-[lib/units.ts:50](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L50)
+[lib/units.ts:96](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L96)
 
 ## Properties
 
@@ -46,7 +52,7 @@
 
 #### Defined in
 
-[lib/units.ts:48](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L48)
+[lib/units.ts:94](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L94)
 
 ___
 
@@ -56,7 +62,7 @@ ___
 
 #### Defined in
 
-[lib/units.ts:50](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L50)
+[lib/units.ts:96](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L96)
 
 ___
 
@@ -66,7 +72,7 @@ ___
 
 #### Defined in
 
-[lib/units.ts:50](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L50)
+[lib/units.ts:96](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L96)
 
 ## Accessors
 
@@ -74,13 +80,19 @@ ___
 
 • `get` **km**(): `number`
 
+Returns the distance in kilometers.
+
+**`Memberof`**
+
+Distance
+
 #### Returns
 
 `number`
 
 #### Defined in
 
-[lib/units.ts:68](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L68)
+[lib/units.ts:126](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L126)
 
 ___
 
@@ -88,13 +100,19 @@ ___
 
 • `get` **m**(): `number`
 
+Returns the distance in meters.
+
+**`Memberof`**
+
+Distance
+
 #### Returns
 
 `number`
 
 #### Defined in
 
-[lib/units.ts:64](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L64)
+[lib/units.ts:116](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L116)
 
 ___
 
@@ -102,13 +120,19 @@ ___
 
 • `get` **mi**(): `number`
 
+Returns the distance in miles.
+
+**`Memberof`**
+
+Distance
+
 #### Returns
 
 `number`
 
 #### Defined in
 
-[lib/units.ts:72](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L72)
+[lib/units.ts:136](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L136)
 
 ___
 
@@ -116,10 +140,16 @@ ___
 
 • `get` **nm**(): `number`
 
+Returns the distance in nautical miles.
+
+**`Memberof`**
+
+Distance
+
 #### Returns
 
 `number`
 
 #### Defined in
 
-[lib/units.ts:76](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L76)
+[lib/units.ts:146](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L146)

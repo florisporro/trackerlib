@@ -47,7 +47,7 @@ get a new id, which is the id of the lastRoutePoint + 1.
 
 #### Defined in
 
-[lib/route.ts:22](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/route.ts#L22)
+[lib/route.ts:22](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L22)
 
 ## Properties
 
@@ -57,7 +57,7 @@ get a new id, which is the id of the lastRoutePoint + 1.
 
 #### Defined in
 
-[lib/route.ts:16](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/route.ts#L16)
+[lib/route.ts:16](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L16)
 
 ___
 
@@ -67,7 +67,7 @@ ___
 
 #### Defined in
 
-[lib/route.ts:18](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/route.ts#L18)
+[lib/route.ts:18](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L18)
 
 ___
 
@@ -77,7 +77,7 @@ ___
 
 #### Defined in
 
-[lib/route.ts:19](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/route.ts#L19)
+[lib/route.ts:19](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L19)
 
 ___
 
@@ -87,7 +87,7 @@ ___
 
 #### Defined in
 
-[lib/route.ts:13](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/route.ts#L13)
+[lib/route.ts:13](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L13)
 
 ___
 
@@ -97,7 +97,7 @@ ___
 
 #### Defined in
 
-[lib/route.ts:17](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/route.ts#L17)
+[lib/route.ts:17](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L17)
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 #### Defined in
 
-[lib/route.ts:14](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/route.ts#L14)
+[lib/route.ts:14](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L14)
 
 ___
 
@@ -117,7 +117,7 @@ ___
 
 #### Defined in
 
-[lib/route.ts:15](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/route.ts#L15)
+[lib/route.ts:15](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L15)
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 #### Defined in
 
-[lib/route.ts:20](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/route.ts#L20)
+[lib/route.ts:20](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L20)
 
 ## Methods
 
@@ -153,7 +153,7 @@ RoutePoint
 
 #### Defined in
 
-[lib/route.ts:57](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/route.ts#L57)
+[lib/route.ts:57](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L57)
 
 ___
 
@@ -179,4 +179,4 @@ RoutePoint
 
 #### Defined in
 
-[lib/route.ts:46](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/route.ts#L46)
+[lib/route.ts:46](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L46)

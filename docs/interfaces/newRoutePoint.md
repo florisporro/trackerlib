@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[lib/route.ts:65](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/route.ts#L65)
+[lib/route.ts:65](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L65)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-[lib/route.ts:64](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/route.ts#L64)
+[lib/route.ts:64](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L64)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-[lib/route.ts:63](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/route.ts#L63)
+[lib/route.ts:63](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L63)

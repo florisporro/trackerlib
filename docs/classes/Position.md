@@ -2,6 +2,10 @@
 
 # Class: Position
 
+Position class. Holds a position in latitude and longitude, and optionally altitude.
+
+**`Export`**
+
 ## Table of contents
 
 ### Constructors
@@ -28,7 +32,7 @@
 
 #### Defined in
 
-[lib/units.ts:6](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L6)
+[lib/units.ts:12](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L12)
 
 ## Properties
 
@@ -38,7 +42,7 @@
 
 #### Defined in
 
-[lib/units.ts:4](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L4)
+[lib/units.ts:10](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L10)
 
 ___
 
@@ -48,7 +52,7 @@ ___
 
 #### Defined in
 
-[lib/units.ts:3](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L3)
+[lib/units.ts:9](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L9)
 
 ___
 
@@ -58,4 +62,4 @@ ___
 
 #### Defined in
 
-[lib/units.ts:2](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L2)
+[lib/units.ts:8](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L8)

@@ -10,7 +10,17 @@ interface NewFrame {
 	lastFrame?: Frame
 }
 
-class Frame {
+/**
+ * A frame is a snapshot of a position at a given time.
+ * 
+ * If a lastFrame is included in the constructor, the frame will calculate the distance travelled since the last frame.
+ * Additionally, the frame will then receive a frameno, which is the frameno of the last frame + 1.
+ * If frames are recorded using the Tracker.record function, this will be done automatically.
+ *
+ * @export
+ * @class Frame
+ */
+export class Frame {
 	readonly frameno: number;
 	position: Position;
 	frameTimestamp: number;
@@ -48,6 +58,17 @@ class Frame {
 	}
 }
 
+/**
+ * The Tracker class. A Tracker is a moving object that is tracked, like a car, boat, airplane etc.
+ * A tracker has many frames. A frame is a snapshot of a position at a given time. Using this history, many calculations can be made.
+ * For example, the speed, bearing, distance travelled, projected position etc.
+ * The class also offers functions for calculations along a route.
+ * 
+ * You can initialize the class with a name, type and other meta data. These are all optional.
+ *
+ * @export
+ * @class Tracker
+ */
 export class Tracker {
 	name: string;
 	type?: string;
@@ -61,7 +82,14 @@ export class Tracker {
 		this.meta = meta;
 	}
 
-	record(newFrame: NewFrame) {
+	/**
+	 * Record a new frame for the tracker
+	 *
+	 * @param {NewFrame} newFrame
+	 * @return {*} 
+	 * @memberof Tracker
+	 */
+	record(newFrame: NewFrame): Frame {
 		// Check if the new frame is a duplicate, if so, ignore it
 		if (this.currentFrame?.positionTimestamp !== undefined) {
 			if (this.currentFrame?.positionTimestamp === newFrame?.positionTimestamp) return this.currentFrame
@@ -77,23 +105,57 @@ export class Tracker {
 		return this.currentFrame as Frame
 	}
 
-	get currentFrame() {
+	/**
+	 * Gets the current tracker frame
+	 *
+	 * @readonly
+	 * @type {(Frame | undefined)}
+	 * @memberof Tracker
+	 */
+	get currentFrame(): Frame | undefined {
 		return this.frames[this.frames.length - 1]
 	}
 
-	get lastFrame() {
+	/**
+	 * The frame recorded just prior to the current frame
+	 *
+	 * @readonly
+	 * @memberof Tracker
+	 */
+	get lastFrame(): Frame | undefined {
 		return this.frames[this.frames.length - 2]
 	}
 
+	/**
+	 * The last recorded tracker position
+	 *
+	 * @readonly
+	 * @memberof Tracker
+	 */
 	get position() {
-		return this.currentFrame.position
+		return this.currentFrame?.position
 	}
 
+	/**
+	 * Get the projected position of the tracker using Date.now()
+	 *
+	 * @readonly
+	 * @memberof Tracker
+	 */
 	get projectedPosition() {
 		return this.projectPosition(Date.now())
 	}
 
-	calcSpeed(frame1: Frame, frame2: Frame): Speed {
+	/**
+	 * Calculate the speed between any two tracker frames
+	 *
+	 * @static
+	 * @param {Frame} frame1
+	 * @param {Frame} frame2
+	 * @return {*}  {Speed}
+	 * @memberof Tracker
+	 */
+	static calcSpeed(frame1: Frame, frame2: Frame): Speed {
 		const speed = geolib.getSpeed({
 			...frame1.position,
 			time: frame1.positionTimestamp || frame1.frameTimestamp
@@ -104,36 +166,74 @@ export class Tracker {
 		return new Speed(speed)
 	}
 
+	/**
+	 * Get the current speed of the tracker
+	 *
+	 * @readonly
+	 * @type {Speed}
+	 * @memberof Tracker
+	 */
 	get speed(): Speed {
 		if (this.frames.length < 2) {
 			return new Speed(0)
 		}
 
-		return this.calcSpeed(this.lastFrame, this.currentFrame)
+		return Tracker.calcSpeed(this.lastFrame as Frame, this.currentFrame as Frame)
 	}
 
+	/**
+	 * Get the historic tracker speeds
+	 *
+	 * @readonly
+	 * @type {Speed[]}
+	 * @memberof Tracker
+	 */
 	get speeds(): Speed[] {		
 		const speeds = this.frames.map((frame, index) => {
 			if (index === 0) return new Speed(0)
-			return this.calcSpeed(this.frames[index - 1], frame)
+			return Tracker.calcSpeed(this.frames[index - 1], frame)
 		})
 
 		// Skip the first speed, which is always 0
 		return speeds.slice(1)
 	}
 
-	calcBearing(frame1: Frame, frame2: Frame) {
+	
+	/**
+	 * Calculate the bearing between any two tracker frames
+	 *
+	 * @static
+	 * @param {Frame} frame1
+	 * @param {Frame} frame2
+	 * @return {*} 
+	 * @memberof Tracker
+	 */
+	static calcBearing(frame1: Frame, frame2: Frame) {
 		return geolib.getRhumbLineBearing(frame1.position, frame2.position)
 	}
 
-	get bearing() {
+	/**
+	 * Get the current bearing of the tracker
+	 *
+	 * @readonly
+	 * @memberof Tracker
+	 */
+	get bearing(): number {
 		if (this.frames.length < 2) {
 			return 0
 		}
 
-		return this.calcBearing(this.lastFrame, this.currentFrame)
+		return Tracker.calcBearing(this.lastFrame as Frame, this.currentFrame as Frame)
 	}
 
+	/**
+	 * Filter the speed using a low pass filter.
+	 *
+	 * @param {number} alpha The alpha value for the filter
+	 * @param {number} sampleCount The number of samples to use for the filter
+	 * @return {*}  {Speed}
+	 * @memberof Tracker
+	 */
 	filterSpeed(alpha: number, sampleCount: number): Speed {
 		if (sampleCount > this.speeds.length) {
 			throw new Error("Sample count is greater than the number speeds calculable")
@@ -145,12 +245,20 @@ export class Tracker {
 		return new Speed(filteredSpeeds[filteredSpeeds.length - 1])
 	}
 
-	filterBearing(alpha: number, sampleCount: number) {
+	/**
+	 * Filter the bearing using a low pass filter.
+	 *
+	 * @param {number} alpha The alpha value for the filter
+	 * @param {number} sampleCount The number of samples to use for the filter
+	 * @return {*}	{number}
+	 * @memberof Tracker
+	 */
+	filterBearing(alpha: number, sampleCount: number): number {
 		const samples = this.frames.slice(-sampleCount)
 
 		const bearings = samples.map((frame, index) => {
 			if (index === 0) return 0
-			return this.calcBearing(samples[index - 1], frame)
+			return Tracker.calcBearing(samples[index - 1], frame)
 		})
 
 		const filteredBearings = lowpassfilter(bearings, alpha)
@@ -158,27 +266,57 @@ export class Tracker {
 		return filteredBearings[filteredBearings.length - 1]
 	}
 
+	/**
+	 * The time since the last sample was taken.
+	 *
+	 * @readonly
+	 * @memberof Tracker
+	 */
 	get timeSinceLastSample() {
 		if (this.frames.length < 1) {
 			return 0
 		}
-		const timestamp = this.currentFrame.positionTimestamp || this.currentFrame.frameTimestamp
+		const timestamp = (this.currentFrame as Frame).positionTimestamp || (this.currentFrame as Frame).frameTimestamp
 		return Date.now() - timestamp
 	}
 
-	get totalDistanceTravelled() {
-		return this.currentFrame.totalDistance
+	/**
+	 *	Total distance travelled by the tracker.
+	 *
+	 * @readonly
+	 * @type {Distance}
+	 * @memberof Tracker
+	 */
+	get totalDistance(): Distance {
+		if (this.frames.length < 1) {
+			return new Distance(0, "m")
+		}
+		return (this.currentFrame as Frame).totalDistance
 	}
 
-	projectPosition(time: number) {
+	/**
+	 * * Project the current position of the tracker based on the last known position, speed and bearing.
+	 *
+	 * @param {number} time
+	 * @return {*}  {Position}
+	 * @memberof Tracker
+	 */
+	projectPosition(time: number): Position | undefined {
 		if (this.frames.length < 2) {
-			return this.currentFrame.position
+			return this.currentFrame?.position
 		}
 
-		return this.currentFrame.projectPosition(this.speed, this.bearing, time)
+		return (this.currentFrame as Frame).projectPosition(this.speed, this.bearing, time)
 	}
 
-	projectTotalDistance(time: number) {
+	/**
+	 * Projects the total distance travelled by the tracker.
+	 *
+	 * @param {number} time
+	 * @return {*}  {Distance}
+	 * @memberof Tracker
+	 */
+	projectTotalDistance(time: number): Distance {
 		if (this.frames.length < 2) {
 			return new Distance(0)
 		}

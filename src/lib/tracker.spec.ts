@@ -5,7 +5,6 @@ import { Route, RoutePoint } from "./route";
 import { Position } from "./units"
 
 describe("Tracker", () => {
-	// let route: Route, start: RoutePoint, point1: RoutePoint, finish: RoutePoint;
 	let tracker: Tracker;
 
 	beforeEach(() => {

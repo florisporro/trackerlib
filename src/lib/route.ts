@@ -153,13 +153,25 @@ export class Route {
 		return target
 	}
 
-	getDistanceAlongRoute(position: Position): number {
+	getDistanceAlongRoute(position: Position): Distance {
 		const nearestPointOnRouteLine = this.getNearestPointOnRouteLine(position)
 		const nearestSegment = this.sortByNearestPathSegment(position)[0]
 		const distanceToNearestRoutePoint = geolib.getDistance(nearestPointOnRouteLine, nearestSegment[0].position)
 		const distanceAlongRoute = nearestSegment[0].totalDistance + distanceToNearestRoutePoint
 
-		return distanceAlongRoute
+		return new Distance(distanceAlongRoute, "m")
+	}
+
+	// When given a distance along the route, return a position on the route line route point at that distance
+	getRoutePointFromDistance(distance: Distance): Position {
+		const routePoint = this.getRoutePointAtDistance(distance)
+		const distanceFromRoutePoint = distance.m - routePoint.totalDistance
+		const bearing = routePoint.bearing
+		if (bearing !== undefined) {
+			return geolib.computeDestinationPoint(routePoint.position, distanceFromRoutePoint, bearing)
+		} else {
+			return routePoint.position;
+		}
 	}
 
 	getAllFollowingRoutePoints(routePoint: RoutePoint): RoutePoint[] {

@@ -3,6 +3,7 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import * as geolib from "geolib";
 
 import { Route, RoutePoint } from "./route";
+import { Distance } from "./units";
 
 
 describe("Route", () => {
@@ -52,12 +53,12 @@ describe("Route", () => {
 		});
 
 		it("sorts route points by a distance travelled value", () => {
-			const sorted = route.sortByDistanceTravelled(geolib.getDistance(start.position, finish.position));
+			const sorted = route.sortByDistanceTravelled(new Distance(geolib.getDistance(start.position, finish.position), "m"));
 			expect(sorted[0].name).to.equal("Finish");
 			expect(sorted[1].name).to.equal("Point1");
 			expect(sorted[2].name).to.equal("Start");
 
-			const sorted2 = route.sortByDistanceTravelled(geolib.getDistance(start.position, point1.position));
+			const sorted2 = route.sortByDistanceTravelled(new Distance(geolib.getDistance(start.position, point1.position), "m"));
 			expect(sorted2[0].name).to.equal("Point1");
 		});
 

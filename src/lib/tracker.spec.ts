@@ -1,6 +1,8 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 
-import { Tracker } from "./tracker";
+import { Tracker, Frame } from "./tracker";
+import { Route, RoutePoint } from "./route";
+import { Position } from "./units"
 
 describe("Tracker", () => {
 	// let route: Route, start: RoutePoint, point1: RoutePoint, finish: RoutePoint;
@@ -71,20 +73,27 @@ describe("Tracker", () => {
 	})
 
 	it("keeps a running total of distance travelled", () => {
-		expect(tracker.currentFrame.totalDistance.m).to.be.above(2220)
-		expect(tracker.currentFrame.totalDistance.m).to.be.below(2230)
+		expect((tracker.currentFrame as Frame).totalDistance.m).to.be.above(2220)
+		expect((tracker.currentFrame as Frame).totalDistance.m).to.be.below(2230)
 	})
 
 	it("ignores recording of duplicate frames", () => {
 		expect(tracker.frames.length).to.equal(3)
 	})
 
-	it("projects position given speed and bearing", () => {
+	it("projects position based on tracker history", () => {
 		const projectedPosition = tracker.projectPosition(Date.now() + 180000)
 
-		expect(projectedPosition.latitude).to.be.above(0.02)
-		expect(projectedPosition.latitude).to.be.below(0.04)
-		expect(projectedPosition.longitude).to.equal(25.0)
+		expect((projectedPosition as Position).latitude).to.be.above(0.02)
+		expect((projectedPosition as Position).latitude).to.be.below(0.04)
+		expect((projectedPosition as Position).longitude).to.equal(25.0)
+	})
+
+	it("projects total distance based on tracker history", () => {
+		const projectedDistance = tracker.projectTotalDistance(Date.now() + 180000)
+
+		expect(projectedDistance.m).to.be.below(4000)
+		expect(projectedDistance.m).to.be.above(3000)
 	})
 
 	it("returns an array of speeds", () => {

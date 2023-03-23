@@ -1,5 +1,5 @@
 import * as geolib from "geolib"
-import { Position } from "./units"
+import { Position, Distance } from "./units"
 
 export class RoutePoint {
 	readonly id: number;
@@ -28,12 +28,12 @@ export class RoutePoint {
 		}
 	}
 
-	getDistance(position: Position): number {
-		return geolib.getDistance(this.position, position)
+	getDistance(position: Position): Distance {
+		return new Distance(geolib.getDistance(this.position, position), "m")
 	}
 
 	getBearing(position: Position): number {
-		return geolib.getRhumbLineBearing(this.position, position)
+		return geolib.getRhumbLineBearing(this.position, position);
 	}
 }
 
@@ -80,17 +80,17 @@ export class Route {
 		return this.sortByDistanceFromPosition(position)[0]
 	}
 
-	static sortByDistanceTravelled(route: RoutePoint[], distance: number): RoutePoint[] {
+	static sortByDistanceTravelled(route: RoutePoint[], distance: Distance): RoutePoint[] {
 		return route.sort((pointA, pointB) => {
-			return Math.abs(distance-pointA.totalDistance) - Math.abs(distance-pointB.totalDistance)
+			return Math.abs(distance.m-pointA.totalDistance) - Math.abs(distance.m-pointB.totalDistance)
 		})
 	}
 
-	sortByDistanceTravelled(distance: number): RoutePoint[] {
+	sortByDistanceTravelled(distance: Distance): RoutePoint[] {
 		return Route.sortByDistanceTravelled(this.routePoints, distance)
 	}
 
-	getRoutePointAtDistance(distance: number): RoutePoint {
+	getRoutePointAtDistance(distance: Distance): RoutePoint {
 		return this.sortByDistanceTravelled(distance)[0]
 	}
 

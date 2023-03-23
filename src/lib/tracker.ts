@@ -321,7 +321,7 @@ export class Tracker {
 			return new Distance(0)
 		}
 
-		return this.currentFrame.projectTotalDistance(this.speed, time)
+		return (this.currentFrame as Frame).projectTotalDistance(this.speed, time)
 	}
 
 	/**
@@ -334,8 +334,12 @@ export class Tracker {
 	 * @memberof Tracker
 	 */
 	projectTotalDistanceAlongRouteLine(time: number, route: Route): Distance {
+		if (this.frames.length < 2) {
+			return new Distance(0)
+		}
+
 		// Get current nearest position on route line
-		const nearestPointOnRouteLine = route.getNearestPointOnRouteLine(this.position)
+		const nearestPointOnRouteLine = route.getNearestPointOnRouteLine(this.position as Position)
 
 		// Get current distance along route
 		const distanceAlongRoute = route.getDistanceAlongRoute(nearestPointOnRouteLine)

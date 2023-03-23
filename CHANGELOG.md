@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.6](https://github.com/florisporro/trackerlib/compare/v0.0.5...v0.0.6) (2023-03-23)
+
+
+### Miscellaneous Chores
+
+* release 0.0.6 ([264bb7e](https://github.com/florisporro/trackerlib/commit/264bb7ee373f019905a073cd90dbb73090fe3706))
+
 ## 0.0.5 (2023-03-23)
 
 

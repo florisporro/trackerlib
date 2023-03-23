@@ -8,21 +8,21 @@ export class RoutePoint {
 	altitude?: number;
 	meta?: object;
 	readonly bearing?: number;
-	readonly distance: number;
-	readonly totalDistance: number;
+	readonly distance: Distance;
+	readonly totalDistance: Distance;
 
 	constructor(position: Position, altitude?: number, name?: string, lastRoutePoint?: RoutePoint) {
 		this.name = name;
 		this.position = position;
 		this.altitude = altitude || 0;
-		this.distance = 0;
-		this.totalDistance = 0;
+		this.distance = new Distance(0);
+		this.totalDistance = new Distance(0);
 
 		if (lastRoutePoint) {
 			this.id = lastRoutePoint.id + 1 || 0;
 			this.bearing = geolib.getRhumbLineBearing(lastRoutePoint.position, position)
-			this.distance = geolib.getDistance(position, lastRoutePoint.position)
-			this.totalDistance = lastRoutePoint.totalDistance + this.distance
+			this.distance = new Distance(geolib.getDistance(position, lastRoutePoint.position))
+			this.totalDistance = new Distance(lastRoutePoint.totalDistance.m + this.distance.m)
 		} else {
 			this.id = 0
 		}
@@ -57,10 +57,10 @@ export class Route {
 		return newRoutePoint
 	}
 
-	get totalDistance() {
-		return this.routePoints.reduce((totalDistance, routePoint) => {
-			return totalDistance + routePoint.distance
-		}, 0)
+	get totalDistance(): Distance {
+		return new Distance(this.routePoints.reduce((totalDistance, routePoint) => {
+			return totalDistance + routePoint.distance.m
+		}, 0))
 	}
 
 	sortByDistanceFromPosition(position: Position): RoutePoint[] {
@@ -82,7 +82,7 @@ export class Route {
 
 	static sortByDistanceTravelled(route: RoutePoint[], distance: Distance): RoutePoint[] {
 		return route.sort((pointA, pointB) => {
-			return Math.abs(distance.m-pointA.totalDistance) - Math.abs(distance.m-pointB.totalDistance)
+			return Math.abs(distance.m-pointA.totalDistance.m) - Math.abs(distance.m-pointB.totalDistance.m)
 		})
 	}
 
@@ -157,7 +157,7 @@ export class Route {
 		const nearestPointOnRouteLine = this.getNearestPointOnRouteLine(position)
 		const nearestSegment = this.sortByNearestPathSegment(position)[0]
 		const distanceToNearestRoutePoint = geolib.getDistance(nearestPointOnRouteLine, nearestSegment[0].position)
-		const distanceAlongRoute = nearestSegment[0].totalDistance + distanceToNearestRoutePoint
+		const distanceAlongRoute = nearestSegment[0].totalDistance.m + distanceToNearestRoutePoint
 
 		return new Distance(distanceAlongRoute, "m")
 	}
@@ -165,7 +165,7 @@ export class Route {
 	// When given a distance along the route, return a position on the route line route point at that distance
 	getRoutePointFromDistance(distance: Distance): Position {
 		const routePoint = this.getRoutePointAtDistance(distance)
-		const distanceFromRoutePoint = distance.m - routePoint.totalDistance
+		const distanceFromRoutePoint = distance.m - routePoint.totalDistance.m
 		const bearing = routePoint.bearing
 		if (bearing !== undefined) {
 			return geolib.computeDestinationPoint(routePoint.position, distanceFromRoutePoint, bearing)

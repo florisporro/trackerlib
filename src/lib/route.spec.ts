@@ -17,15 +17,15 @@ describe("Route", () => {
 	});
 
 	it("calculates distances on route points", () => {
-		expect(start.distance).to.equal(0);
-		expect(point1.distance).to.equal(geolib.getDistance(start.position, point1.position));
-		expect(finish.distance).to.equal(geolib.getDistance(point1.position, finish.position));
+		expect(start.distance.m).to.equal(0);
+		expect(point1.distance.m).to.equal(geolib.getDistance(start.position, point1.position));
+		expect(finish.distance.m).to.equal(geolib.getDistance(point1.position, finish.position));
 	})
 
 	it("calculates total distance on route points", () => {
-		expect(start.totalDistance).to.equal(0);
-		expect(point1.totalDistance).to.equal(geolib.getDistance(start.position, point1.position));
-		expect(finish.totalDistance).to.equal(geolib.getDistance(start.position, finish.position));
+		expect(start.totalDistance.m).to.equal(0);
+		expect(point1.totalDistance.m).to.equal(geolib.getDistance(start.position, point1.position));
+		expect(finish.totalDistance.m).to.equal(geolib.getDistance(start.position, finish.position));
 	})
 
 	it("calculates bearing on route points", () => {
@@ -34,8 +34,8 @@ describe("Route", () => {
 	})
 
 	it("calculates total route distance", () => {
-		expect(finish.totalDistance).to.equal(geolib.getDistance(start.position, finish.position));
-		expect(route.totalDistance).to.equal(geolib.getDistance(start.position, finish.position));
+		expect(finish.totalDistance.m).to.equal(geolib.getDistance(start.position, finish.position));
+		expect(route.totalDistance.m).to.equal(geolib.getDistance(start.position, finish.position));
 	});
 
 	it("makes a unique id when adding route points", () => {

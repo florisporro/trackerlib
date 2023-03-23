@@ -1,6 +1,7 @@
 import * as geolib from "geolib";
 import { lowpassfilter } from "./filters";
 import { Speed, Position, Distance } from "./units";
+import { Route } from "./route";
 
 interface NewFrame {
 	position: Position,
@@ -183,5 +184,52 @@ export class Tracker {
 		}
 
 		return this.currentFrame.projectTotalDistance(this.speed, time)
+	}
+
+	/**
+	 * Get the current projected distance along a given route, irrespective of the distance the tracker has travelled.
+	 * This will stop working if the tracker is deviating from the route for whatever reason.
+	 *
+	 * @param {number} time The time to project to
+	 * @param {Route} route The route to project along
+	 * @return {*}  {Distance}
+	 * @memberof Tracker
+	 */
+	projectTotalDistanceAlongRouteLine(time: number, route: Route): Distance {
+		// Get current nearest position on route line
+		const nearestPointOnRouteLine = route.getNearestPointOnRouteLine(this.position)
+
+		// Get current distance along route
+		const distanceAlongRoute = route.getDistanceAlongRoute(nearestPointOnRouteLine)
+
+		// Get delta distance
+		const deltaDistance = this.totalDistance.m - distanceAlongRoute.m
+
+		// Project total distance
+		const projectedTotalDistance = this.projectTotalDistance(time)
+
+		// Subtract the delta
+		const adjustedTotalDistance = new Distance(projectedTotalDistance.m - deltaDistance, "m")
+
+		return adjustedTotalDistance
+	}
+
+	/**
+	 * Projects the current position on the route line.
+	 * This will stop working if the tracker is deviating from the route line for whatever reason.
+	 *
+	 * @param {number} time The time to project to
+	 * @param {Route} route The route to project along
+	 * @return {*}  {Position}
+	 * @memberof Tracker
+	 */
+	projectPositionOnRouteLine(time: number, route: Route): Position {		
+		// Get the projected distance along the route line
+		const projectedDistance = this.projectTotalDistanceAlongRouteLine(time, route)
+		
+		// Get the projected position on the route line
+		const projectedPositionOnRoute = route.getRoutePointFromDistance(projectedDistance)
+
+		return projectedPositionOnRoute
 	}
 }

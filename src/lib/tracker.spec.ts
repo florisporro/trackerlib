@@ -121,4 +121,57 @@ describe("Tracker", () => {
 		
 		expect(filteredSpeed.mps).to.equal(expectedSpeed)
 	})
+
+	describe("projecting along a route", () => {
+		let route: Route, start: RoutePoint, point1: RoutePoint, finish: RoutePoint;
+		let tracker2: Tracker;
+
+		beforeEach(() => {
+			route = new Route();
+			start = route.addRoutePoint({ name: "Start", position: { latitude: 0, longitude: 25.0 } });
+			point1 = route.addRoutePoint({ name: "Point1", position: { latitude: 0.01, longitude: 25.0 } });
+			finish = route.addRoutePoint({ name: "Finish", position: { latitude: 0.01, longitude: 25.01 } });
+
+			tracker2 = new Tracker("Test Tracker", "Car");
+	
+			tracker2.record({
+				position: {
+					latitude: -0.01,
+					longitude: 25.0
+				}
+			})
+
+			tracker2.record({
+				position: {
+					latitude: 0.0,
+					longitude: 25.0
+				},
+				positionTimestamp: Date.now() + 60000
+			})
+
+			tracker2.record({
+				position: {
+					latitude: 0.01,
+					longitude: 25.0
+				},
+				positionTimestamp: Date.now() + 120000
+			})
+		})
+
+		it("projects position directly ahead", () => {
+			const projectedPosition = tracker2.projectPosition(Date.now() + 180000)
+
+			expect((projectedPosition as Position).latitude).to.be.above(0.019)
+			expect((projectedPosition as Position).latitude).to.be.below(0.021)
+			expect((projectedPosition as Position).longitude).to.equal(25.0)
+		})
+
+		it("projects position along the route line", () => {
+			const projectedPosition = tracker2.projectPositionOnRouteLine(Date.now() + 180000, route)
+
+			expect(projectedPosition.latitude).to.equal(0.01)
+			expect(projectedPosition.longitude).to.be.above(25.009)
+			expect(projectedPosition.longitude).to.be.below(25.011)
+		})
+	})
 })

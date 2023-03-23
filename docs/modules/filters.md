@@ -29,8 +29,8 @@ Filters an array of values using a low pass filter
 
 `number`[]
 
-{number[]} - Filtered array of values
+- Filtered array of values
 
 #### Defined in
 
-[lib/filters.ts:9](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/filters.ts#L9)
+[lib/filters.ts:9](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/filters.ts#L9)

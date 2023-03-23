@@ -4,7 +4,7 @@
  * @export
  * @param {number[]} values - Array of values to filter
  * @param {number} alpha - Alpha value for the filter
- * @return {*}  {number[]} - Filtered array of values
+ * @return {number[]} - Filtered array of values
  */
 export function lowpassfilter(values: number[], alpha: number): number[] {
 	let value = values[0];

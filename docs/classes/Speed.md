@@ -34,7 +34,7 @@
 
 #### Defined in
 
-[lib/units.ts:16](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/units.ts#L16)
+[lib/units.ts:16](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L16)
 
 ## Properties
 
@@ -44,7 +44,7 @@
 
 #### Defined in
 
-[lib/units.ts:14](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/units.ts#L14)
+[lib/units.ts:14](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L14)
 
 ## Accessors
 
@@ -58,7 +58,7 @@
 
 #### Defined in
 
-[lib/units.ts:34](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/units.ts#L34)
+[lib/units.ts:34](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L34)
 
 ___
 
@@ -72,7 +72,7 @@ ___
 
 #### Defined in
 
-[lib/units.ts:42](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/units.ts#L42)
+[lib/units.ts:42](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L42)
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 #### Defined in
 
-[lib/units.ts:38](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/units.ts#L38)
+[lib/units.ts:38](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L38)
 
 ___
 
@@ -100,4 +100,4 @@ ___
 
 #### Defined in
 
-[lib/units.ts:30](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/units.ts#L30)
+[lib/units.ts:30](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/units.ts#L30)

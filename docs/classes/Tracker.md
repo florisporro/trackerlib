@@ -64,17 +64,17 @@ You can initialize the class with a name, type and other meta data. These are al
 
 #### Defined in
 
-[lib/tracker.ts:78](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L78)
+[lib/tracker.ts:78](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L78)
 
 ## Properties
 
 ### frames
 
-• **frames**: `Frame`[]
+• **frames**: [`Frame`](Frame.md)[]
 
 #### Defined in
 
-[lib/tracker.ts:75](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L75)
+[lib/tracker.ts:75](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L75)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:76](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L76)
+[lib/tracker.ts:76](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L76)
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:73](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L73)
+[lib/tracker.ts:73](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L73)
 
 ___
 
@@ -104,7 +104,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:74](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L74)
+[lib/tracker.ts:74](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L74)
 
 ## Accessors
 
@@ -124,13 +124,13 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:221](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L221)
+[lib/tracker.ts:221](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L221)
 
 ___
 
 ### currentFrame
 
-• `get` **currentFrame**(): `undefined` \| `Frame`
+• `get` **currentFrame**(): `undefined` \| [`Frame`](Frame.md)
 
 Gets the current tracker frame
 
@@ -140,17 +140,17 @@ Tracker
 
 #### Returns
 
-`undefined` \| `Frame`
+`undefined` \| [`Frame`](Frame.md)
 
 #### Defined in
 
-[lib/tracker.ts:115](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L115)
+[lib/tracker.ts:115](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L115)
 
 ___
 
 ### lastFrame
 
-• `get` **lastFrame**(): `undefined` \| `Frame`
+• `get` **lastFrame**(): `undefined` \| [`Frame`](Frame.md)
 
 The frame recorded just prior to the current frame
 
@@ -160,11 +160,11 @@ Tracker
 
 #### Returns
 
-`undefined` \| `Frame`
+`undefined` \| [`Frame`](Frame.md)
 
 #### Defined in
 
-[lib/tracker.ts:125](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L125)
+[lib/tracker.ts:125](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L125)
 
 ___
 
@@ -184,7 +184,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:135](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L135)
+[lib/tracker.ts:135](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L135)
 
 ___
 
@@ -204,7 +204,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:145](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L145)
+[lib/tracker.ts:145](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L145)
 
 ___
 
@@ -224,7 +224,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:176](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L176)
+[lib/tracker.ts:176](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L176)
 
 ___
 
@@ -244,7 +244,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:191](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L191)
+[lib/tracker.ts:191](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L191)
 
 ___
 
@@ -264,7 +264,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:275](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L275)
+[lib/tracker.ts:275](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L275)
 
 ___
 
@@ -284,7 +284,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:290](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L290)
+[lib/tracker.ts:290](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L290)
 
 ## Methods
 
@@ -309,11 +309,9 @@ Tracker
 
 `number`
 
-{number}
-
 #### Defined in
 
-[lib/tracker.ts:256](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L256)
+[lib/tracker.ts:256](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L256)
 
 ___
 
@@ -338,11 +336,9 @@ Tracker
 
 [`Speed`](Speed.md)
 
-{Speed}
-
 #### Defined in
 
-[lib/tracker.ts:237](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L237)
+[lib/tracker.ts:237](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L237)
 
 ___
 
@@ -366,11 +362,9 @@ Tracker
 
 `undefined` \| [`Position`](Position.md)
 
-{Position}
-
 #### Defined in
 
-[lib/tracker.ts:304](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L304)
+[lib/tracker.ts:304](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L304)
 
 ___
 
@@ -396,11 +390,9 @@ Tracker
 
 [`Position`](Position.md)
 
-{Position}
-
 #### Defined in
 
-[lib/tracker.ts:368](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L368)
+[lib/tracker.ts:368](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L368)
 
 ___
 
@@ -424,11 +416,9 @@ Tracker
 
 [`Distance`](Distance.md)
 
-{Distance}
-
 #### Defined in
 
-[lib/tracker.ts:319](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L319)
+[lib/tracker.ts:319](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L319)
 
 ___
 
@@ -454,17 +444,15 @@ Tracker
 
 [`Distance`](Distance.md)
 
-{Distance}
-
 #### Defined in
 
-[lib/tracker.ts:336](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L336)
+[lib/tracker.ts:336](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L336)
 
 ___
 
 ### record
 
-▸ **record**(`newFrame`): `Frame`
+▸ **record**(`newFrame`): [`Frame`](Frame.md)
 
 Record a new frame for the tracker
 
@@ -476,15 +464,15 @@ Tracker
 
 | Name | Type |
 | :------ | :------ |
-| `newFrame` | `NewFrame` |
+| `newFrame` | [`NewFrame`](../interfaces/NewFrame.md) |
 
 #### Returns
 
-`Frame`
+[`Frame`](Frame.md)
 
 #### Defined in
 
-[lib/tracker.ts:92](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L92)
+[lib/tracker.ts:92](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L92)
 
 ___
 
@@ -504,8 +492,8 @@ Tracker
 
 | Name | Type |
 | :------ | :------ |
-| `frame1` | `Frame` |
-| `frame2` | `Frame` |
+| `frame1` | [`Frame`](Frame.md) |
+| `frame2` | [`Frame`](Frame.md) |
 
 #### Returns
 
@@ -513,7 +501,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:211](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L211)
+[lib/tracker.ts:211](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L211)
 
 ___
 
@@ -533,15 +521,13 @@ Tracker
 
 | Name | Type |
 | :------ | :------ |
-| `frame1` | `Frame` |
-| `frame2` | `Frame` |
+| `frame1` | [`Frame`](Frame.md) |
+| `frame2` | [`Frame`](Frame.md) |
 
 #### Returns
 
 [`Speed`](Speed.md)
 
-{Speed}
-
 #### Defined in
 
-[lib/tracker.ts:158](https://github.com/florisporro/trackerlib/blob/90bf6ff/src/lib/tracker.ts#L158)
+[lib/tracker.ts:158](https://github.com/florisporro/trackerlib/blob/c50ffda/src/lib/tracker.ts#L158)

@@ -11,7 +11,7 @@
 		"start": "npm run build && node build/index.js",
 		"start:dev": "nodemon",
 		"lint": "prettier --list-different 'src/*.ts'",
-		"build": "rimraf ./build; npm run build:esm; npm run build:cjs",
+		"build": "rimraf ./build; typedoc --plugin typedoc-plugin-markdown --out docs src/index.ts; npm run build:esm; npm run build:cjs",
 		"build:esm": "tsc -p tsconfig.json",
 		"build:cjs": "tsc -p tsconfig-cjs.json",
 		"test": "vitest",

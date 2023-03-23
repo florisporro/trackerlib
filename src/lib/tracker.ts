@@ -3,7 +3,7 @@ import { lowpassfilter } from "./filters";
 import { Speed, Position, Distance } from "./units";
 import { Route } from "./route";
 
-interface NewFrame {
+export interface NewFrame {
 	position: Position,
 	altitude?: number,
 	positionTimestamp?: number,
@@ -152,7 +152,7 @@ export class Tracker {
 	 * @static
 	 * @param {Frame} frame1
 	 * @param {Frame} frame2
-	 * @return {*}  {Speed}
+	 * @return {Speed}
 	 * @memberof Tracker
 	 */
 	static calcSpeed(frame1: Frame, frame2: Frame): Speed {
@@ -231,7 +231,7 @@ export class Tracker {
 	 *
 	 * @param {number} alpha The alpha value for the filter
 	 * @param {number} sampleCount The number of samples to use for the filter
-	 * @return {*}  {Speed}
+	 * @return {Speed}
 	 * @memberof Tracker
 	 */
 	filterSpeed(alpha: number, sampleCount: number): Speed {
@@ -250,7 +250,7 @@ export class Tracker {
 	 *
 	 * @param {number} alpha The alpha value for the filter
 	 * @param {number} sampleCount The number of samples to use for the filter
-	 * @return {*}	{number}
+	 * @return {number}
 	 * @memberof Tracker
 	 */
 	filterBearing(alpha: number, sampleCount: number): number {
@@ -298,7 +298,7 @@ export class Tracker {
 	 * * Project the current position of the tracker based on the last known position, speed and bearing.
 	 *
 	 * @param {number} time
-	 * @return {*}  {Position}
+	 * @return {Position}
 	 * @memberof Tracker
 	 */
 	projectPosition(time: number): Position | undefined {
@@ -313,7 +313,7 @@ export class Tracker {
 	 * Projects the total distance travelled by the tracker.
 	 *
 	 * @param {number} time
-	 * @return {*}  {Distance}
+	 * @return {Distance}
 	 * @memberof Tracker
 	 */
 	projectTotalDistance(time: number): Distance {
@@ -330,7 +330,7 @@ export class Tracker {
 	 *
 	 * @param {number} time The time to project to
 	 * @param {Route} route The route to project along
-	 * @return {*}  {Distance}
+	 * @return {Distance}
 	 * @memberof Tracker
 	 */
 	projectTotalDistanceAlongRouteLine(time: number, route: Route): Distance {
@@ -362,7 +362,7 @@ export class Tracker {
 	 *
 	 * @param {number} time The time to project to
 	 * @param {Route} route The route to project along
-	 * @return {*}  {Position}
+	 * @return {Position}
 	 * @memberof Tracker
 	 */
 	projectPositionOnRouteLine(time: number, route: Route): Position {		

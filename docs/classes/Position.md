@@ -32,7 +32,7 @@ Position class. Holds a position in latitude and longitude, and optionally altit
 
 #### Defined in
 
-[lib/units.ts:12](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L12)
+[lib/units.ts:12](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L12)
 
 ## Properties
 
@@ -42,7 +42,7 @@ Position class. Holds a position in latitude and longitude, and optionally altit
 
 #### Defined in
 
-[lib/units.ts:10](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L10)
+[lib/units.ts:10](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L10)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 #### Defined in
 
-[lib/units.ts:9](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L9)
+[lib/units.ts:9](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L9)
 
 ___
 
@@ -62,4 +62,4 @@ ___
 
 #### Defined in
 
-[lib/units.ts:8](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L8)
+[lib/units.ts:8](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L8)

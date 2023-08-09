@@ -17,8 +17,6 @@ Units default to meters.
 ### Properties
 
 - [distance](Distance.md#distance)
-- [unit](Distance.md#unit)
-- [value](Distance.md#value)
 
 ### Accessors
 
@@ -42,7 +40,7 @@ Units default to meters.
 
 #### Defined in
 
-[lib/units.ts:96](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L96)
+[lib/units.ts:96](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L96)
 
 ## Properties
 
@@ -52,27 +50,7 @@ Units default to meters.
 
 #### Defined in
 
-[lib/units.ts:94](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L94)
-
-___
-
-### unit
-
-• **unit**: `string` = `"m"`
-
-#### Defined in
-
-[lib/units.ts:96](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L96)
-
-___
-
-### value
-
-• **value**: `number`
-
-#### Defined in
-
-[lib/units.ts:96](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L96)
+[lib/units.ts:94](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L94)
 
 ## Accessors
 
@@ -92,7 +70,7 @@ Distance
 
 #### Defined in
 
-[lib/units.ts:126](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L126)
+[lib/units.ts:126](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L126)
 
 ___
 
@@ -112,7 +90,7 @@ Distance
 
 #### Defined in
 
-[lib/units.ts:116](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L116)
+[lib/units.ts:116](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L116)
 
 ___
 
@@ -132,7 +110,7 @@ Distance
 
 #### Defined in
 
-[lib/units.ts:136](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L136)
+[lib/units.ts:136](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L136)
 
 ___
 
@@ -152,4 +130,4 @@ Distance
 
 #### Defined in
 
-[lib/units.ts:146](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L146)
+[lib/units.ts:146](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L146)

@@ -17,6 +17,7 @@
 - [RoutePoint](classes/RoutePoint.md)
 - [Speed](classes/Speed.md)
 - [Tracker](classes/Tracker.md)
+- [TrackerList](classes/TrackerList.md)
 
 ### Interfaces
 

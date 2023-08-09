@@ -64,7 +64,7 @@ You can initialize the class with a name, type and other meta data. These are al
 
 #### Defined in
 
-[lib/tracker.ts:78](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L78)
+[lib/tracker.ts:95](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L95)
 
 ## Properties
 
@@ -74,7 +74,7 @@ You can initialize the class with a name, type and other meta data. These are al
 
 #### Defined in
 
-[lib/tracker.ts:75](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L75)
+[lib/tracker.ts:92](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L92)
 
 ___
 
@@ -84,7 +84,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:76](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L76)
+[lib/tracker.ts:93](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L93)
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:73](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L73)
+[lib/tracker.ts:90](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L90)
 
 ___
 
@@ -104,7 +104,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:74](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L74)
+[lib/tracker.ts:91](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L91)
 
 ## Accessors
 
@@ -124,7 +124,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:221](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L221)
+[lib/tracker.ts:238](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L238)
 
 ___
 
@@ -144,7 +144,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:115](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L115)
+[lib/tracker.ts:132](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L132)
 
 ___
 
@@ -164,7 +164,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:125](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L125)
+[lib/tracker.ts:142](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L142)
 
 ___
 
@@ -184,7 +184,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:135](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L135)
+[lib/tracker.ts:152](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L152)
 
 ___
 
@@ -204,7 +204,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:145](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L145)
+[lib/tracker.ts:162](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L162)
 
 ___
 
@@ -224,7 +224,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:176](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L176)
+[lib/tracker.ts:193](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L193)
 
 ___
 
@@ -244,7 +244,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:191](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L191)
+[lib/tracker.ts:208](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L208)
 
 ___
 
@@ -264,7 +264,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:275](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L275)
+[lib/tracker.ts:292](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L292)
 
 ___
 
@@ -284,7 +284,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:290](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L290)
+[lib/tracker.ts:307](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L307)
 
 ## Methods
 
@@ -311,7 +311,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:256](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L256)
+[lib/tracker.ts:273](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L273)
 
 ___
 
@@ -338,7 +338,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:237](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L237)
+[lib/tracker.ts:254](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L254)
 
 ___
 
@@ -364,7 +364,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:304](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L304)
+[lib/tracker.ts:321](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L321)
 
 ___
 
@@ -392,7 +392,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:368](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L368)
+[lib/tracker.ts:385](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L385)
 
 ___
 
@@ -418,7 +418,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:319](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L319)
+[lib/tracker.ts:336](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L336)
 
 ___
 
@@ -446,7 +446,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:336](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L336)
+[lib/tracker.ts:353](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L353)
 
 ___
 
@@ -472,7 +472,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:92](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L92)
+[lib/tracker.ts:109](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L109)
 
 ___
 
@@ -501,7 +501,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:211](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L211)
+[lib/tracker.ts:228](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L228)
 
 ___
 
@@ -530,4 +530,4 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:158](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/tracker.ts#L158)
+[lib/tracker.ts:175](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L175)

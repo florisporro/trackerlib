@@ -40,7 +40,7 @@ Units default to meters per second.
 
 #### Defined in
 
-[lib/units.ts:30](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L30)
+[lib/units.ts:30](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L30)
 
 ## Properties
 
@@ -50,7 +50,7 @@ Units default to meters per second.
 
 #### Defined in
 
-[lib/units.ts:28](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L28)
+[lib/units.ts:28](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L28)
 
 ## Accessors
 
@@ -70,7 +70,7 @@ Speed
 
 #### Defined in
 
-[lib/units.ts:60](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L60)
+[lib/units.ts:60](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L60)
 
 ___
 
@@ -90,7 +90,7 @@ Speed
 
 #### Defined in
 
-[lib/units.ts:80](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L80)
+[lib/units.ts:80](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L80)
 
 ___
 
@@ -110,7 +110,7 @@ Speed
 
 #### Defined in
 
-[lib/units.ts:70](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L70)
+[lib/units.ts:70](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L70)
 
 ___
 
@@ -130,4 +130,4 @@ Speed
 
 #### Defined in
 
-[lib/units.ts:50](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/units.ts#L50)
+[lib/units.ts:50](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/units.ts#L50)

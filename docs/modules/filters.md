@@ -33,4 +33,4 @@ Filters an array of values using a low pass filter
 
 #### Defined in
 
-[lib/filters.ts:9](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/filters.ts#L9)
+[lib/filters.ts:9](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/filters.ts#L9)

@@ -16,6 +16,7 @@ the closest route position along the route line, or to sort the route points by 
 ### Properties
 
 - [routePoints](Route.md#routepoints)
+- [waypoints](Route.md#waypoints)
 
 ### Accessors
 
@@ -24,6 +25,7 @@ the closest route position along the route line, or to sort the route points by 
 ### Methods
 
 - [addRoutePoint](Route.md#addroutepoint)
+- [addWaypoint](Route.md#addwaypoint)
 - [getAllFollowingRoutePoints](Route.md#getallfollowingroutepoints)
 - [getClosestRoutePoint](Route.md#getclosestroutepoint)
 - [getCurrentSegment](Route.md#getcurrentsegment)
@@ -46,7 +48,7 @@ the closest route position along the route line, or to sort the route points by 
 
 #### Defined in
 
-[lib/route.ts:78](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L78)
+[lib/route.ts:97](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L97)
 
 ## Properties
 
@@ -56,7 +58,17 @@ the closest route position along the route line, or to sort the route points by 
 
 #### Defined in
 
-[lib/route.ts:76](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L76)
+[lib/route.ts:94](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L94)
+
+___
+
+### waypoints
+
+• **waypoints**: `Waypoint`[]
+
+#### Defined in
+
+[lib/route.ts:95](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L95)
 
 ## Accessors
 
@@ -76,7 +88,7 @@ Route
 
 #### Defined in
 
-[lib/route.ts:102](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L102)
+[lib/route.ts:136](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L136)
 
 ## Methods
 
@@ -102,7 +114,33 @@ Route
 
 #### Defined in
 
-[lib/route.ts:89](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L89)
+[lib/route.ts:109](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L109)
+
+___
+
+### addWaypoint
+
+▸ **addWaypoint**(`waypoint`): `Waypoint`
+
+Adds a new waypoint to the route.
+
+**`Memberof`**
+
+Route
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `waypoint` | `NewWaypoint` |
+
+#### Returns
+
+`Waypoint`
+
+#### Defined in
+
+[lib/route.ts:123](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L123)
 
 ___
 
@@ -128,7 +166,7 @@ Route
 
 #### Defined in
 
-[lib/route.ts:314](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L314)
+[lib/route.ts:348](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L348)
 
 ___
 
@@ -154,7 +192,7 @@ Route
 
 #### Defined in
 
-[lib/route.ts:144](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L144)
+[lib/route.ts:178](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L178)
 
 ___
 
@@ -180,7 +218,7 @@ Route
 
 #### Defined in
 
-[lib/route.ts:223](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L223)
+[lib/route.ts:257](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L257)
 
 ___
 
@@ -206,7 +244,7 @@ Route
 
 #### Defined in
 
-[lib/route.ts:280](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L280)
+[lib/route.ts:314](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L314)
 
 ___
 
@@ -232,7 +270,7 @@ Route
 
 #### Defined in
 
-[lib/route.ts:247](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L247)
+[lib/route.ts:281](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L281)
 
 ___
 
@@ -258,7 +296,7 @@ Route
 
 #### Defined in
 
-[lib/route.ts:235](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L235)
+[lib/route.ts:269](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L269)
 
 ___
 
@@ -284,7 +322,7 @@ Route
 
 #### Defined in
 
-[lib/route.ts:181](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L181)
+[lib/route.ts:215](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L215)
 
 ___
 
@@ -310,7 +348,7 @@ Route
 
 #### Defined in
 
-[lib/route.ts:296](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L296)
+[lib/route.ts:330](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L330)
 
 ___
 
@@ -336,7 +374,7 @@ Route
 
 #### Defined in
 
-[lib/route.ts:115](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L115)
+[lib/route.ts:149](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L149)
 
 ___
 
@@ -362,7 +400,7 @@ Route
 
 #### Defined in
 
-[lib/route.ts:170](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L170)
+[lib/route.ts:204](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L204)
 
 ___
 
@@ -389,7 +427,7 @@ Route
 
 #### Defined in
 
-[lib/route.ts:193](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L193)
+[lib/route.ts:227](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L227)
 
 ___
 
@@ -418,7 +456,7 @@ Route
 
 #### Defined in
 
-[lib/route.ts:128](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L128)
+[lib/route.ts:162](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L162)
 
 ___
 
@@ -447,4 +485,4 @@ Route
 
 #### Defined in
 
-[lib/route.ts:157](https://github.com/florisporro/trackerlib/blob/0d9d0a6/src/lib/route.ts#L157)
+[lib/route.ts:191](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/route.ts#L191)

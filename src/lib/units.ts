@@ -93,7 +93,7 @@ export class Speed {
 export class Distance {
 	distance: number;
 
-	constructor(public value: number, public unit: string = "m") {
+	constructor(value: number, unit: string = "m") {
 		if (unit === "m") {
 			this.distance = value
 		} else if (unit === "km") {

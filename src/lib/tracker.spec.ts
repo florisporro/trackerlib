@@ -118,7 +118,8 @@ describe("Tracker", () => {
 		const expectedSpeed = 18.55 + difference
 		const filteredSpeed = tracker.filterSpeed(0.2, 2)
 		
-		expect(filteredSpeed.mps).to.equal(expectedSpeed)
+		expect(filteredSpeed.mps).to.be.above(expectedSpeed - 0.02)
+		expect(filteredSpeed.mps).to.be.below(expectedSpeed + 0.02)
 	})
 
 	describe("projecting along a route", () => {

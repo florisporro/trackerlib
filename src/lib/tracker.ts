@@ -47,11 +47,28 @@ export class Frame {
 		return this.positionTimestamp || this.frameTimestamp;
 	}
 
+	/**
+	 * Project the current frame out to a new position, based on a speed, bearing and time.
+	 *
+	 * @param {Speed} speed
+	 * @param {number} bearing
+	 * @param {number} time
+	 * @return {Position}
+	 * @memberof Frame
+	 */
 	projectPosition(speed: Speed, bearing: number, time: number): Position {
 		const elapsed = (time - this.timestamp) / 1000;
 		return new Position(geolib.computeDestinationPoint(this.position, speed.mps * elapsed, bearing));
 	}
 
+	/**
+	 * Project the new total distance travelled based on a speed and time.
+	 *
+	 * @param {Speed} speed
+	 * @param {number} time
+	 * @return {*}  {Distance}
+	 * @memberof Frame
+	 */
 	projectTotalDistance(speed: Speed, time: number): Distance {
 		const elapsed = (time - this.timestamp) / 1000;
 		return new Distance(this.totalDistance.m + speed.mps * elapsed);

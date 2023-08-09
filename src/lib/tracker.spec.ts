@@ -13,35 +13,28 @@ describe("Tracker", () => {
 		});
 
 		tracker.record({
-			position: {
 				latitude: 0.0,
 				longitude: 25.0
 			}
-		})
+		)
 
 		tracker.record({
-			position: {
 				latitude: 0.01,
 				longitude: 25.0
-			},
-			positionTimestamp: Date.now() + 60000
-		})
+			}, Date.now() + 60000
+		)
 
 		tracker.record({
-			position: {
 				latitude: 0.01,
 				longitude: 25.0
-			},
-			positionTimestamp: Date.now() + 60000
-		})
+			}, Date.now() + 60000
+		)
 
 		tracker.record({
-			position: {
 				latitude: 0.02,
 				longitude: 25.0
-			},
-			positionTimestamp: Date.now() + 120000
-		})
+			}, Date.now() + 120000
+		)
 	});
 
 	it("creates a new tracker", () => {
@@ -105,13 +98,13 @@ describe("Tracker", () => {
 	})
 
 	it("at sudden acceleration, filtered speed increases by the difference times the factor", () => {
-		tracker.record({
-			position: {
+		tracker.record(
+			{
 				latitude: 0.04,
 				longitude: 25.0
 			},
-			positionTimestamp: Date.now() + 180000
-		})
+			Date.now() + 180000
+		)
 
 		const difference = 18.55 * 0.2
 
@@ -120,6 +113,21 @@ describe("Tracker", () => {
 		
 		expect(filteredSpeed.mps).to.be.above(expectedSpeed - 0.02)
 		expect(filteredSpeed.mps).to.be.below(expectedSpeed + 0.02)
+	})
+
+	describe("serializing / deserializing to JSON", () => {
+		it("serializes", () => {
+			const serializedTracker = tracker.serialize()
+			expect(serializedTracker.name).to.equal("Test Tracker")
+		});
+
+		it("deserializes", () => {
+			const serializedTracker = tracker.serialize()
+			const deserializedTracker = Tracker.deserialize(serializedTracker)
+			expect(deserializedTracker.name).to.equal("Test Tracker")
+			// console.log(deserializedTracker)
+			expect(deserializedTracker.totalDistance.m).to.equal(2226);
+		});
 	})
 
 	describe("projecting along a route", () => {
@@ -135,27 +143,24 @@ describe("Tracker", () => {
 			tracker2 = new Tracker("Test Tracker", "Car");
 	
 			tracker2.record({
-				position: {
 					latitude: -0.01,
 					longitude: 25.0
 				}
-			})
+			)
 
 			tracker2.record({
-				position: {
 					latitude: 0.0,
 					longitude: 25.0
 				},
-				positionTimestamp: Date.now() + 60000
-			})
+				Date.now() + 60000
+			)
 
 			tracker2.record({
-				position: {
 					latitude: 0.01,
 					longitude: 25.0
 				},
-				positionTimestamp: Date.now() + 120000
-			})
+				Date.now() + 120000
+			)
 		})
 
 		it("projects position directly ahead", () => {

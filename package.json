@@ -33,6 +33,7 @@
 	},
 	"dependencies": {
 		"chaikin-smooth": "^1.0.4",
-		"geolib": "^3.3.3"
+		"geolib": "^3.3.3",
+		"serializr": "^3.0.2"
 	}
 }

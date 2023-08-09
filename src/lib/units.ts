@@ -1,3 +1,7 @@
+import {
+	serializable,
+} from "serializr";
+
 /**
  * Position class. Holds a position in latitude and longitude, and optionally altitude.
  *
@@ -5,11 +9,16 @@
  * @class Position
  */
 export class Position {
+	@serializable
 	longitude: number;
+	
+	@serializable
 	latitude: number;
+	
+	@serializable
 	altitude?: number;
 
-	constructor({ latitude, longitude, altitude }: Position) {
+	constructor(latitude: number, longitude: number, altitude?: number) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.altitude = altitude;
@@ -25,6 +34,7 @@ export class Position {
  * @class Speed
  */
 export class Speed {
+	@serializable
 	speed: number;
 
 	constructor(value: number, unit: string = "m/s") {
@@ -91,6 +101,7 @@ export class Speed {
  * @class Distance
  */
 export class Distance {
+	@serializable
 	distance: number;
 
 	constructor(value: number, unit: string = "m") {

@@ -1,6 +1,7 @@
 import { Tracker } from "./tracker"
 import { Route } from "./route"
 import { Distance } from "./units"
+import { serializable, identifier, object, serialize, deserialize } from "serializr";
 
 /**
  * A tracker list is a collection of trackers
@@ -11,7 +12,16 @@ import { Distance } from "./units"
  * @class TrackerList
  */
 export class TrackerList {
-	constructor(public name: string, public trackers: Tracker[]) {}
+	@serializable(identifier())
+	name: string;
+
+	@serializable(object(Tracker))
+	trackers: Tracker[];
+
+	constructor(name: string, trackers: Tracker[]) {
+		this.name = name
+		this.trackers = trackers
+	}
 
 	/**
 	 * Add a tracker to the list
@@ -100,5 +110,29 @@ export class TrackerList {
 			const bDistance = b.projectTotalDistanceAlongRouteLine(time, route).m
 			return bDistance - aDistance
 		})
+	}
+
+	/**
+	 * Serializes the trackerlist object to a stringifyable object
+	 *
+	 * @return {*} 
+	 * @memberof TrackerList
+	 */
+	serialize() {
+
+		return serialize(this);
+	}
+
+	/**
+	 * Deserializes the trackerlist object from a stringifyable object
+	 *
+	 * @static
+	 * @param {{}} serializedTracker
+	 * @return {*} 
+	 * @memberof TrackerList
+	 */
+	static deserialize(serializedTracker: {}) {
+
+		return deserialize(TrackerList, serializedTracker);
 	}
 }

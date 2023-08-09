@@ -2,13 +2,15 @@ import * as geolib from "geolib";
 import { lowpassfilter } from "./filters";
 import { Speed, Position, Distance } from "./units";
 import { Route } from "./route";
-
-export interface NewFrame {
-	position: Position,
-	altitude?: number,
-	positionTimestamp?: number,
-	lastFrame?: Frame
-}
+import {
+	list,
+	object,
+	identifier,
+	raw,
+	serialize,
+	deserialize,
+	serializable,
+} from "serializr";
 
 /**
  * A frame is a snapshot of a position at a given time.
@@ -21,22 +23,33 @@ export interface NewFrame {
  * @class Frame
  */
 export class Frame {
+	@serializable(identifier())
 	readonly frameno: number;
+	
+	@serializable(object(Position))
 	position: Position;
+
+	@serializable
 	frameTimestamp: number;
+	
+	@serializable
 	positionTimestamp?: number;
+	
+	@serializable(object(Distance))
 	distance?: Distance;
+	
+	@serializable(object(Distance))
 	totalDistance: Distance;
 
-	constructor(newFrame: NewFrame) {
-		this.position = new Position(newFrame.position);
+	constructor(position: Position, positionTimestamp?: number, lastFrame?: Frame) {
+		this.position = position;
 		this.frameTimestamp = Date.now();
-		this.positionTimestamp = newFrame.positionTimestamp || Date.now();
+		this.positionTimestamp = positionTimestamp || Date.now();
 
-		if (newFrame.lastFrame) {
-			this.frameno = newFrame.lastFrame.frameno + 1 || 0;
-			this.distance = new Distance(geolib.getDistance(newFrame.lastFrame.position, this.position));
-			this.totalDistance = new Distance(newFrame.lastFrame.totalDistance.m + this.distance.m);
+		if (lastFrame) {
+			this.frameno = lastFrame.frameno + 1 || 0;
+			this.distance = new Distance(geolib.getDistance(lastFrame.position, this.position));
+			this.totalDistance = new Distance(lastFrame.totalDistance.m + this.distance.m);
 		} else {
 			this.frameno = 0;
 			this.totalDistance = new Distance(0);
@@ -58,7 +71,8 @@ export class Frame {
 	 */
 	projectPosition(speed: Speed, bearing: number, time: number): Position {
 		const elapsed = (time - this.timestamp) / 1000;
-		return new Position(geolib.computeDestinationPoint(this.position, speed.mps * elapsed, bearing));
+		const destination = geolib.computeDestinationPoint(this.position, speed.mps * elapsed, bearing)
+		return new Position(destination.latitude, destination.longitude);
 	}
 
 	/**
@@ -87,9 +101,16 @@ export class Frame {
  * @class Tracker
  */
 export class Tracker {
+	@serializable(identifier())
 	name: string;
+	
+	@serializable
 	type?: string;
+	
+	@serializable(list(object(Frame)))
 	frames: Array<Frame>
+
+	@serializable(raw())
 	meta?: any;
 
 	constructor(name: string, type?: string, meta?: any) {
@@ -106,16 +127,16 @@ export class Tracker {
 	 * @return {*} 
 	 * @memberof Tracker
 	 */
-	record(newFrame: NewFrame): Frame {
+	record(position: Position, positionTimestamp?: number): Frame {
 		// Check if the new frame is a duplicate, if so, ignore it
 		if (this.currentFrame?.positionTimestamp !== undefined) {
-			if (this.currentFrame?.positionTimestamp === newFrame?.positionTimestamp) return this.currentFrame
+			if (this.currentFrame?.positionTimestamp === positionTimestamp) return this.currentFrame
 		}
 
-		const frame = new Frame({
-			...newFrame,
-			lastFrame: this.currentFrame
-		})
+		const frame = new Frame(position,
+			positionTimestamp,
+			this.currentFrame
+		)
 
 		this.frames = [...this.frames, frame]
 
@@ -391,4 +412,27 @@ export class Tracker {
 
 		return projectedPositionOnRoute
 	}
+
+	/**
+	 * Serialize the tracker to a stringifyable object
+	 *
+	 * @return {*} 
+	 * @memberof Tracker
+	 */
+	serialize() {
+		return serialize(this);
+	}
+
+	/**
+	 * Deserialize a tracker from a stringifyable object
+	 *
+	 * @static
+	 * @param {{}} serializedTracker
+	 * @return {*} 
+	 * @memberof Tracker
+	 */
+	static deserialize(serializedTracker: {}) {
+		return deserialize(Tracker, serializedTracker);
+	}
+
 }

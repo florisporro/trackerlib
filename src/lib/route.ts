@@ -1,6 +1,24 @@
 import * as geolib from "geolib"
 import { Position, Distance } from "./units"
 
+export interface NewWaypoint {
+	name: string;
+	position: Position;
+	altitude?: number;
+	meta?: object;
+}
+
+/**
+ * A waypoint is a point on the route line, but it does not make up the line itself and is not used as part of Route calculations.
+ * It is a marker, a point of interest, a checkpoint, etc.
+ *
+ * @export
+ * @class Waypoint
+ */
+export class Waypoint {
+	constructor(public name: string, public position: Position, public distanceAlongRoute: Distance, public meta: object | undefined) {}
+}
+
 /**
  * A route point is a point on a route line. It can be given a lastRoutePoint in its constructor,
  * which will then calculate the distance and bearing between the two points. It will also
@@ -74,9 +92,11 @@ export interface newRoutePoint {
  */
 export class Route {
 	routePoints: RoutePoint[]
+	waypoints: Waypoint[]
 
 	constructor() {
 		this.routePoints = []
+		this.waypoints = []
 	}
 	
 	/**
@@ -91,6 +111,20 @@ export class Route {
 		const newRoutePoint = new RoutePoint(routePoint.position, routePoint.altitude, routePoint.name, lastRoutePoint)
 		this.routePoints = [...this.routePoints, newRoutePoint]
 		return newRoutePoint
+	}
+
+	/**
+	 * Adds a new waypoint to the route.
+	 *
+	 * @param {NewWaypoint} waypoint
+	 * @return {Waypoint}
+	 * @memberof Route
+	 */
+	addWaypoint(waypoint: NewWaypoint): Waypoint {
+		const positionOnRoute = this.getNearestPointOnRouteLine(waypoint.position)
+		const distanceAlongRoute = this.getDistanceAlongRoute(positionOnRoute)
+		const newWaypoint = new Waypoint(waypoint.name, positionOnRoute, distanceAlongRoute, waypoint.meta)
+		return newWaypoint
 	}
 
 	/**

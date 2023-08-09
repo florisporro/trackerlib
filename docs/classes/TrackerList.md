@@ -24,9 +24,11 @@ the time to reach another tracker, etc.
 - [getProjectedDistancesTravelled](TrackerList.md#getprojecteddistancestravelled)
 - [getProjectedDistancesTravelledAlongRoute](TrackerList.md#getprojecteddistancestravelledalongroute)
 - [getTotalDistancesTravelled](TrackerList.md#gettotaldistancestravelled)
+- [serialize](TrackerList.md#serialize)
 - [sortByProjectedDistaceTravelled](TrackerList.md#sortbyprojecteddistacetravelled)
 - [sortByProjectedDistanceTravelledAlongRoute](TrackerList.md#sortbyprojecteddistancetravelledalongroute)
 - [sortByTotalDistanceTravelled](TrackerList.md#sortbytotaldistancetravelled)
+- [deserialize](TrackerList.md#deserialize)
 
 ## Constructors
 
@@ -43,7 +45,7 @@ the time to reach another tracker, etc.
 
 #### Defined in
 
-[lib/trackerlist.ts:14](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/trackerlist.ts#L14)
+[lib/trackerlist.ts:21](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/trackerlist.ts#L21)
 
 ## Properties
 
@@ -53,7 +55,7 @@ the time to reach another tracker, etc.
 
 #### Defined in
 
-[lib/trackerlist.ts:14](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/trackerlist.ts#L14)
+[lib/trackerlist.ts:16](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/trackerlist.ts#L16)
 
 ___
 
@@ -63,7 +65,7 @@ ___
 
 #### Defined in
 
-[lib/trackerlist.ts:14](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/trackerlist.ts#L14)
+[lib/trackerlist.ts:19](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/trackerlist.ts#L19)
 
 ## Methods
 
@@ -89,7 +91,7 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:22](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/trackerlist.ts#L22)
+[lib/trackerlist.ts:32](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/trackerlist.ts#L32)
 
 ___
 
@@ -115,7 +117,7 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:58](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/trackerlist.ts#L58)
+[lib/trackerlist.ts:68](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/trackerlist.ts#L68)
 
 ___
 
@@ -142,7 +144,7 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:85](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/trackerlist.ts#L85)
+[lib/trackerlist.ts:95](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/trackerlist.ts#L95)
 
 ___
 
@@ -162,7 +164,27 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:32](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/trackerlist.ts#L32)
+[lib/trackerlist.ts:42](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/trackerlist.ts#L42)
+
+___
+
+### serialize
+
+▸ **serialize**(): `any`
+
+Serializes the trackerlist object to a stringifyable object
+
+**`Memberof`**
+
+TrackerList
+
+#### Returns
+
+`any`
+
+#### Defined in
+
+[lib/trackerlist.ts:121](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/trackerlist.ts#L121)
 
 ___
 
@@ -188,7 +210,7 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:69](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/trackerlist.ts#L69)
+[lib/trackerlist.ts:79](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/trackerlist.ts#L79)
 
 ___
 
@@ -215,7 +237,7 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:97](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/trackerlist.ts#L97)
+[lib/trackerlist.ts:107](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/trackerlist.ts#L107)
 
 ___
 
@@ -235,4 +257,32 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:42](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/trackerlist.ts#L42)
+[lib/trackerlist.ts:52](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/trackerlist.ts#L52)
+
+___
+
+### deserialize
+
+▸ `Static` **deserialize**(`serializedTracker`): [`TrackerList`](TrackerList.md)
+
+Deserializes the trackerlist object from a stringifyable object
+
+**`Static`**
+
+**`Memberof`**
+
+TrackerList
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `serializedTracker` | `Object` |
+
+#### Returns
+
+[`TrackerList`](TrackerList.md)
+
+#### Defined in
+
+[lib/trackerlist.ts:134](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/trackerlist.ts#L134)

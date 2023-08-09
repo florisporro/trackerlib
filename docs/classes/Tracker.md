@@ -45,8 +45,10 @@ You can initialize the class with a name, type and other meta data. These are al
 - [projectTotalDistance](Tracker.md#projecttotaldistance)
 - [projectTotalDistanceAlongRouteLine](Tracker.md#projecttotaldistancealongrouteline)
 - [record](Tracker.md#record)
+- [serialize](Tracker.md#serialize)
 - [calcBearing](Tracker.md#calcbearing)
 - [calcSpeed](Tracker.md#calcspeed)
+- [deserialize](Tracker.md#deserialize)
 
 ## Constructors
 
@@ -64,7 +66,7 @@ You can initialize the class with a name, type and other meta data. These are al
 
 #### Defined in
 
-[lib/tracker.ts:95](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L95)
+[lib/tracker.ts:116](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L116)
 
 ## Properties
 
@@ -74,7 +76,7 @@ You can initialize the class with a name, type and other meta data. These are al
 
 #### Defined in
 
-[lib/tracker.ts:92](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L92)
+[lib/tracker.ts:111](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L111)
 
 ___
 
@@ -84,7 +86,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:93](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L93)
+[lib/tracker.ts:114](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L114)
 
 ___
 
@@ -94,7 +96,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:90](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L90)
+[lib/tracker.ts:105](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L105)
 
 ___
 
@@ -104,7 +106,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:91](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L91)
+[lib/tracker.ts:108](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L108)
 
 ## Accessors
 
@@ -124,7 +126,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:238](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L238)
+[lib/tracker.ts:259](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L259)
 
 ___
 
@@ -144,7 +146,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:132](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L132)
+[lib/tracker.ts:153](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L153)
 
 ___
 
@@ -164,7 +166,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:142](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L142)
+[lib/tracker.ts:163](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L163)
 
 ___
 
@@ -184,7 +186,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:152](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L152)
+[lib/tracker.ts:173](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L173)
 
 ___
 
@@ -204,7 +206,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:162](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L162)
+[lib/tracker.ts:183](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L183)
 
 ___
 
@@ -224,7 +226,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:193](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L193)
+[lib/tracker.ts:214](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L214)
 
 ___
 
@@ -244,7 +246,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:208](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L208)
+[lib/tracker.ts:229](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L229)
 
 ___
 
@@ -264,7 +266,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:292](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L292)
+[lib/tracker.ts:313](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L313)
 
 ___
 
@@ -284,7 +286,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:307](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L307)
+[lib/tracker.ts:328](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L328)
 
 ## Methods
 
@@ -311,7 +313,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:273](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L273)
+[lib/tracker.ts:294](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L294)
 
 ___
 
@@ -338,7 +340,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:254](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L254)
+[lib/tracker.ts:275](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L275)
 
 ___
 
@@ -364,7 +366,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:321](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L321)
+[lib/tracker.ts:342](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L342)
 
 ___
 
@@ -392,7 +394,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:385](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L385)
+[lib/tracker.ts:406](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L406)
 
 ___
 
@@ -418,7 +420,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:336](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L336)
+[lib/tracker.ts:357](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L357)
 
 ___
 
@@ -446,13 +448,13 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:353](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L353)
+[lib/tracker.ts:374](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L374)
 
 ___
 
 ### record
 
-▸ **record**(`newFrame`): [`Frame`](Frame.md)
+▸ **record**(`position`, `positionTimestamp?`): [`Frame`](Frame.md)
 
 Record a new frame for the tracker
 
@@ -464,7 +466,8 @@ Tracker
 
 | Name | Type |
 | :------ | :------ |
-| `newFrame` | [`NewFrame`](../interfaces/NewFrame.md) |
+| `position` | [`Position`](Position.md) |
+| `positionTimestamp?` | `number` |
 
 #### Returns
 
@@ -472,7 +475,27 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:109](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L109)
+[lib/tracker.ts:130](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L130)
+
+___
+
+### serialize
+
+▸ **serialize**(): `any`
+
+Serialize the tracker to a stringifyable object
+
+**`Memberof`**
+
+Tracker
+
+#### Returns
+
+`any`
+
+#### Defined in
+
+[lib/tracker.ts:422](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L422)
 
 ___
 
@@ -501,7 +524,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:228](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L228)
+[lib/tracker.ts:249](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L249)
 
 ___
 
@@ -530,4 +553,32 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:175](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L175)
+[lib/tracker.ts:196](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L196)
+
+___
+
+### deserialize
+
+▸ `Static` **deserialize**(`serializedTracker`): [`Tracker`](Tracker.md)
+
+Deserialize a tracker from a stringifyable object
+
+**`Static`**
+
+**`Memberof`**
+
+Tracker
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `serializedTracker` | `Object` |
+
+#### Returns
+
+[`Tracker`](Tracker.md)
+
+#### Defined in
+
+[lib/tracker.ts:434](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L434)

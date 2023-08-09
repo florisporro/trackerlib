@@ -38,17 +38,19 @@ If frames are recorded using the Tracker.record function, this will be done auto
 
 ### constructor
 
-• **new Frame**(`newFrame`)
+• **new Frame**(`position`, `positionTimestamp?`, `lastFrame?`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `newFrame` | [`NewFrame`](../interfaces/NewFrame.md) |
+| `position` | [`Position`](Position.md) |
+| `positionTimestamp?` | `number` |
+| `lastFrame?` | [`Frame`](Frame.md) |
 
 #### Defined in
 
-[lib/tracker.ts:31](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L31)
+[lib/tracker.ts:44](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L44)
 
 ## Properties
 
@@ -58,7 +60,7 @@ If frames are recorded using the Tracker.record function, this will be done auto
 
 #### Defined in
 
-[lib/tracker.ts:28](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L28)
+[lib/tracker.ts:39](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L39)
 
 ___
 
@@ -68,7 +70,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:26](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L26)
+[lib/tracker.ts:33](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L33)
 
 ___
 
@@ -78,7 +80,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:24](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L24)
+[lib/tracker.ts:27](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L27)
 
 ___
 
@@ -88,7 +90,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:25](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L25)
+[lib/tracker.ts:30](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L30)
 
 ___
 
@@ -98,7 +100,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:27](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L27)
+[lib/tracker.ts:36](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L36)
 
 ___
 
@@ -108,7 +110,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:29](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L29)
+[lib/tracker.ts:42](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L42)
 
 ## Accessors
 
@@ -122,7 +124,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:46](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L46)
+[lib/tracker.ts:59](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L59)
 
 ## Methods
 
@@ -150,7 +152,7 @@ Frame
 
 #### Defined in
 
-[lib/tracker.ts:59](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L59)
+[lib/tracker.ts:72](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L72)
 
 ___
 
@@ -179,4 +181,4 @@ Frame
 
 #### Defined in
 
-[lib/tracker.ts:72](https://github.com/florisporro/trackerlib/blob/326f9fc/src/lib/tracker.ts#L72)
+[lib/tracker.ts:86](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/tracker.ts#L86)

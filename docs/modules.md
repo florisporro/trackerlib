@@ -21,5 +21,4 @@
 
 ### Interfaces
 
-- [NewFrame](interfaces/NewFrame.md)
 - [newRoutePoint](interfaces/newRoutePoint.md)

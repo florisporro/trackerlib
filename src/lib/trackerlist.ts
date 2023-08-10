@@ -15,8 +15,8 @@ export class TrackerList {
 	@serializable(identifier())
 	name: string;
 
-	@serializable(object(Tracker))
-	trackers: Tracker[];
+	@serializable(list(object(Tracker)))
+	trackers: Array<Tracker>;
 
 	constructor(name: string, trackers: Tracker[]) {
 		this.name = name
@@ -132,7 +132,6 @@ export class TrackerList {
 	 * @memberof TrackerList
 	 */
 	static deserialize(serializedTracker: {}) {
-
 		return deserialize(TrackerList, serializedTracker);
 	}
 }

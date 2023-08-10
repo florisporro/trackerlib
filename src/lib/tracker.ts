@@ -274,7 +274,7 @@ export class Tracker {
 	 */
 	filterSpeed(alpha: number, sampleCount: number): Speed {
 		if (sampleCount > this.speeds.length) {
-			throw new Error("Sample count is greater than the number speeds calculable")
+			return new Speed(0)
 		}
 		const samples = this.speeds.slice(-sampleCount).map(speed => speed.mps)
 

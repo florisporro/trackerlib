@@ -40,7 +40,7 @@ Units default to meters.
 
 #### Defined in
 
-[lib/units.ts:107](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/units.ts#L107)
+[lib/units.ts:107](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/units.ts#L107)
 
 ## Properties
 
@@ -50,7 +50,7 @@ Units default to meters.
 
 #### Defined in
 
-[lib/units.ts:105](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/units.ts#L105)
+[lib/units.ts:105](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/units.ts#L105)
 
 ## Accessors
 
@@ -70,7 +70,7 @@ Distance
 
 #### Defined in
 
-[lib/units.ts:137](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/units.ts#L137)
+[lib/units.ts:137](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/units.ts#L137)
 
 ___
 
@@ -90,7 +90,7 @@ Distance
 
 #### Defined in
 
-[lib/units.ts:127](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/units.ts#L127)
+[lib/units.ts:127](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/units.ts#L127)
 
 ___
 
@@ -110,7 +110,7 @@ Distance
 
 #### Defined in
 
-[lib/units.ts:147](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/units.ts#L147)
+[lib/units.ts:147](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/units.ts#L147)
 
 ___
 
@@ -130,4 +130,4 @@ Distance
 
 #### Defined in
 
-[lib/units.ts:157](https://github.com/florisporro/trackerlib/blob/e55e3af/src/lib/units.ts#L157)
+[lib/units.ts:157](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/units.ts#L157)

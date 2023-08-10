@@ -15,8 +15,7 @@
 		"build:esm": "tsc -p tsconfig.json",
 		"build:cjs": "tsc -p tsconfig-cjs.json",
 		"test": "vitest",
-		"prepublishOnly": "npm run build",
-		"document": "typedoc --plugin typedoc-plugin-markdown --out docs src/index.ts"
+		"prepublishOnly": "npm run build"
 	},
 	"keywords": [],
 	"author": "",

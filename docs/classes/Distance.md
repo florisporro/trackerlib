@@ -25,6 +25,10 @@ Units default to meters.
 - [mi](Distance.md#mi)
 - [nm](Distance.md#nm)
 
+### Methods
+
+- [valueOf](Distance.md#valueof)
+
 ## Constructors
 
 ### constructor
@@ -40,7 +44,7 @@ Units default to meters.
 
 #### Defined in
 
-[lib/units.ts:107](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/units.ts#L107)
+[lib/units.ts:112](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/units.ts#L112)
 
 ## Properties
 
@@ -50,7 +54,7 @@ Units default to meters.
 
 #### Defined in
 
-[lib/units.ts:105](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/units.ts#L105)
+[lib/units.ts:110](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/units.ts#L110)
 
 ## Accessors
 
@@ -70,7 +74,7 @@ Distance
 
 #### Defined in
 
-[lib/units.ts:137](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/units.ts#L137)
+[lib/units.ts:142](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/units.ts#L142)
 
 ___
 
@@ -90,7 +94,7 @@ Distance
 
 #### Defined in
 
-[lib/units.ts:127](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/units.ts#L127)
+[lib/units.ts:132](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/units.ts#L132)
 
 ___
 
@@ -110,7 +114,7 @@ Distance
 
 #### Defined in
 
-[lib/units.ts:147](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/units.ts#L147)
+[lib/units.ts:152](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/units.ts#L152)
 
 ___
 
@@ -130,4 +134,18 @@ Distance
 
 #### Defined in
 
-[lib/units.ts:157](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/units.ts#L157)
+[lib/units.ts:162](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/units.ts#L162)
+
+## Methods
+
+### valueOf
+
+▸ **valueOf**(): `number`
+
+#### Returns
+
+`number`
+
+#### Defined in
+
+[lib/units.ts:166](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/units.ts#L166)

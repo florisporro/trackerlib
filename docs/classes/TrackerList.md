@@ -45,7 +45,7 @@ the time to reach another tracker, etc.
 
 #### Defined in
 
-[lib/trackerlist.ts:38](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/trackerlist.ts#L38)
+[lib/trackerlist.ts:29](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/trackerlist.ts#L29)
 
 ## Properties
 
@@ -55,7 +55,7 @@ the time to reach another tracker, etc.
 
 #### Defined in
 
-[lib/trackerlist.ts:33](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/trackerlist.ts#L33)
+[lib/trackerlist.ts:24](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/trackerlist.ts#L24)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[lib/trackerlist.ts:36](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/trackerlist.ts#L36)
+[lib/trackerlist.ts:27](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/trackerlist.ts#L27)
 
 ## Methods
 
@@ -91,7 +91,7 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:49](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/trackerlist.ts#L49)
+[lib/trackerlist.ts:40](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/trackerlist.ts#L40)
 
 ___
 
@@ -117,7 +117,7 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:85](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/trackerlist.ts#L85)
+[lib/trackerlist.ts:76](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/trackerlist.ts#L76)
 
 ___
 
@@ -144,7 +144,7 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:112](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/trackerlist.ts#L112)
+[lib/trackerlist.ts:103](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/trackerlist.ts#L103)
 
 ___
 
@@ -164,7 +164,7 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:59](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/trackerlist.ts#L59)
+[lib/trackerlist.ts:50](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/trackerlist.ts#L50)
 
 ___
 
@@ -184,7 +184,7 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:138](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/trackerlist.ts#L138)
+[lib/trackerlist.ts:129](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/trackerlist.ts#L129)
 
 ___
 
@@ -210,7 +210,7 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:96](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/trackerlist.ts#L96)
+[lib/trackerlist.ts:87](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/trackerlist.ts#L87)
 
 ___
 
@@ -237,7 +237,7 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:124](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/trackerlist.ts#L124)
+[lib/trackerlist.ts:115](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/trackerlist.ts#L115)
 
 ___
 
@@ -257,7 +257,7 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:69](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/trackerlist.ts#L69)
+[lib/trackerlist.ts:60](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/trackerlist.ts#L60)
 
 ___
 
@@ -285,4 +285,4 @@ TrackerList
 
 #### Defined in
 
-[lib/trackerlist.ts:151](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/trackerlist.ts#L151)
+[lib/trackerlist.ts:142](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/trackerlist.ts#L142)

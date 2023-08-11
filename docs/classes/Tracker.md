@@ -38,6 +38,8 @@ You can initialize the class with a name, type and other meta data. These are al
 
 ### Methods
 
+- [calcSpeedAlongRouteLine](Tracker.md#calcspeedalongrouteline)
+- [calcTrackerRelativeMotion](Tracker.md#calctrackerrelativemotion)
 - [filterBearing](Tracker.md#filterbearing)
 - [filterSpeed](Tracker.md#filterspeed)
 - [projectPosition](Tracker.md#projectposition)
@@ -48,6 +50,7 @@ You can initialize the class with a name, type and other meta data. These are al
 - [serialize](Tracker.md#serialize)
 - [calcBearing](Tracker.md#calcbearing)
 - [calcSpeed](Tracker.md#calcspeed)
+- [calcSpeedAlongRouteLine](Tracker.md#calcspeedalongrouteline-1)
 - [deserialize](Tracker.md#deserialize)
 
 ## Constructors
@@ -66,7 +69,7 @@ You can initialize the class with a name, type and other meta data. These are al
 
 #### Defined in
 
-[lib/tracker.ts:116](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L116)
+[lib/tracker.ts:127](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L127)
 
 ## Properties
 
@@ -76,7 +79,7 @@ You can initialize the class with a name, type and other meta data. These are al
 
 #### Defined in
 
-[lib/tracker.ts:111](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L111)
+[lib/tracker.ts:122](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L122)
 
 ___
 
@@ -86,7 +89,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:114](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L114)
+[lib/tracker.ts:125](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L125)
 
 ___
 
@@ -96,7 +99,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:105](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L105)
+[lib/tracker.ts:116](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L116)
 
 ___
 
@@ -106,7 +109,7 @@ ___
 
 #### Defined in
 
-[lib/tracker.ts:108](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L108)
+[lib/tracker.ts:119](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L119)
 
 ## Accessors
 
@@ -126,7 +129,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:259](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L259)
+[lib/tracker.ts:308](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L308)
 
 ___
 
@@ -146,7 +149,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:153](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L153)
+[lib/tracker.ts:164](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L164)
 
 ___
 
@@ -166,7 +169,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:163](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L163)
+[lib/tracker.ts:174](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L174)
 
 ___
 
@@ -186,7 +189,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:173](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L173)
+[lib/tracker.ts:184](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L184)
 
 ___
 
@@ -206,7 +209,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:183](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L183)
+[lib/tracker.ts:194](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L194)
 
 ___
 
@@ -226,7 +229,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:214](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L214)
+[lib/tracker.ts:263](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L263)
 
 ___
 
@@ -246,7 +249,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:229](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L229)
+[lib/tracker.ts:278](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L278)
 
 ___
 
@@ -266,7 +269,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:313](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L313)
+[lib/tracker.ts:362](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L362)
 
 ___
 
@@ -286,9 +289,68 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:328](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L328)
+[lib/tracker.ts:377](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L377)
 
 ## Methods
+
+### calcSpeedAlongRouteLine
+
+▸ **calcSpeedAlongRouteLine**(`route`): [`Speed`](Speed.md)
+
+Calculates the present speed of the tracker based on the last two recorded frames
+
+**`Memberof`**
+
+Tracker
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `route` | [`Route`](Route.md) |
+
+#### Returns
+
+[`Speed`](Speed.md)
+
+{Speed}
+
+#### Defined in
+
+[lib/tracker.ts:251](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L251)
+
+___
+
+### calcTrackerRelativeMotion
+
+▸ **calcTrackerRelativeMotion**(`tracker`, `time?`, `route?`): `TrackerRelativeMotion`
+
+Given a tracker to compare against, calculate properties like the time it will take for the two to meet, the distance between them, etc.
+Also handles projections into the future, and projections along a route line.
+
+**`Memberof`**
+
+Tracker
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `tracker` | [`Tracker`](Tracker.md) |
+| `time?` | `number` |
+| `route?` | [`Route`](Route.md) |
+
+#### Returns
+
+`TrackerRelativeMotion`
+
+{TrackerRelativeMotion}
+
+#### Defined in
+
+[lib/tracker.ts:475](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L475)
+
+___
 
 ### filterBearing
 
@@ -313,7 +375,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:294](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L294)
+[lib/tracker.ts:343](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L343)
 
 ___
 
@@ -340,7 +402,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:275](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L275)
+[lib/tracker.ts:324](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L324)
 
 ___
 
@@ -366,7 +428,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:342](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L342)
+[lib/tracker.ts:391](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L391)
 
 ___
 
@@ -394,7 +456,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:406](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L406)
+[lib/tracker.ts:455](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L455)
 
 ___
 
@@ -420,7 +482,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:357](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L357)
+[lib/tracker.ts:406](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L406)
 
 ___
 
@@ -448,7 +510,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:374](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L374)
+[lib/tracker.ts:423](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L423)
 
 ___
 
@@ -475,7 +537,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:130](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L130)
+[lib/tracker.ts:141](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L141)
 
 ___
 
@@ -495,7 +557,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:422](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L422)
+[lib/tracker.ts:536](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L536)
 
 ___
 
@@ -524,7 +586,7 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:249](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L249)
+[lib/tracker.ts:298](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L298)
 
 ___
 
@@ -553,7 +615,39 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:196](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L196)
+[lib/tracker.ts:207](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L207)
+
+___
+
+### calcSpeedAlongRouteLine
+
+▸ `Static` **calcSpeedAlongRouteLine**(`frame1`, `frame2`, `route`): [`Speed`](Speed.md)
+
+Calculate the speed between any two tracker frames along a route line
+
+**`Static`**
+
+**`Memberof`**
+
+Tracker
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `frame1` | [`Frame`](Frame.md) |
+| `frame2` | [`Frame`](Frame.md) |
+| `route` | [`Route`](Route.md) |
+
+#### Returns
+
+[`Speed`](Speed.md)
+
+{Speed}
+
+#### Defined in
+
+[lib/tracker.ts:228](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L228)
 
 ___
 
@@ -581,4 +675,4 @@ Tracker
 
 #### Defined in
 
-[lib/tracker.ts:434](https://github.com/florisporro/trackerlib/blob/47e5200/src/lib/tracker.ts#L434)
+[lib/tracker.ts:548](https://github.com/florisporro/trackerlib/blob/520b40a/src/lib/tracker.ts#L548)

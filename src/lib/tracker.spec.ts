@@ -132,7 +132,7 @@ describe("Tracker", () => {
 		});
 	})
 
-	describe("projecting along a route", () => {
+	describe("working with routes", () => {
 		let route: Route, start: RoutePoint, point1: RoutePoint, finish: RoutePoint;
 		let tracker2: Tracker;
 
@@ -179,6 +179,88 @@ describe("Tracker", () => {
 			expect(projectedPosition.latitude).to.equal(0.01)
 			expect(projectedPosition.longitude).to.be.above(25.009)
 			expect(projectedPosition.longitude).to.be.below(25.011)
+		})
+
+		it("calculates speed along the route line", () => {
+			const speed = tracker2.calcSpeedAlongRouteLine(route)
+			expect(speed.mps).to.be.above(18)
+			expect(speed.mps).to.be.below(19)
+		});
+	})
+
+	describe("calculating relative motion", () => {
+		let route: Route, start: RoutePoint, point1: RoutePoint, finish: RoutePoint;
+		let tracker2: Tracker;
+
+		beforeEach(() => {
+			tracker2 = new Tracker("Test Tracker", "Car");
+		})
+
+		it("returns distance only if one of the trackers does not have enough frames", () => {
+			const relativeMotion = tracker.calcTrackerRelativeMotion(tracker2)
+			expect(relativeMotion?.deltaDistance?.m).to.equal(undefined)
+		});
+
+		it("returns distance if both trackers have frames", () => {
+			tracker2.record({
+				latitude: 0.0,
+				longitude: 25.0})
+			const relativeMotion = tracker.calcTrackerRelativeMotion(tracker2)
+			expect(relativeMotion?.deltaDistance?.m).to.equal(2226)
+		});
+
+		it("returns intercept time if both trackers have more than 1 frame and are closing", () => {
+			tracker2.record({
+				latitude: 0.00,
+				longitude: 25.0}, now)
+
+			tracker2.record({
+				latitude: 0.012,
+				longitude: 25.0}, now + 60000)
+
+			tracker2.record({
+				latitude: 0.02,
+				longitude: 25.0}, now + 90000)
+
+			const relativeMotion = tracker.calcTrackerRelativeMotion(tracker2, now + 120000)
+			// console.log(relativeMotion)
+			// expect(relativeMotion?.distance?.m).to.equal(2226)
+		});
+
+		describe("working with routes", () => {
+			let tracker3, tracker4;
+			
+			beforeEach(() => {
+				route = new Route();
+				start = route.addRoutePoint({ name: "Start", position: { latitude: 0, longitude: 25.0 } });
+				point1 = route.addRoutePoint({ name: "Point1", position: { latitude: 0.01, longitude: 25.0 } });
+				finish = route.addRoutePoint({ name: "Finish", position: { latitude: 0.01, longitude: 25.01 } });
+
+				tracker3 = new Tracker("Test Tracker", "Car");
+				tracker4 = new Tracker("Test Tracker", "Car");
+
+				tracker3.record({
+					latitude: 0.005,
+					longitude: 25.0}, now - 10000)
+				tracker3.record({
+					latitude: 0.006,
+					longitude: 25.0}, now)
+	
+				tracker4.record({
+					latitude: 0.01,
+					longitude: 25.005}, now - 10000)
+
+				tracker4.record({
+					latitude: 0.01,
+					longitude: 25.0055}, now)
+			});
+
+			it("returns relative distance on the route line", () => {
+				const relativeMotion = tracker3.calcTrackerRelativeMotion(tracker4, undefined, route)
+				console.log(relativeMotion)
+				console.log(route.totalDistance)
+				// expect(relativeMotion?.deltaDistance?.m).to.equal(1113)
+			});
 		})
 	})
 })

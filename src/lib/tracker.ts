@@ -89,6 +89,17 @@ export class Frame {
 	}
 }
 
+export interface RelativeMotion {
+	deltaDistance?: Distance,
+	deltaSpeed?: Speed,
+	deltaTime?: number,
+	projected?: RelativeMotion,
+}
+
+export interface TrackerRelativeMotion extends RelativeMotion {
+	alongRoute?: RelativeMotion,
+}
+
 /**
  * The Tracker class. A Tracker is a moving object that is tracked, like a car, boat, airplane etc.
  * A tracker has many frames. A frame is a snapshot of a position at a given time. Using this history, many calculations can be made.
@@ -202,6 +213,44 @@ export class Tracker {
 			time: frame2.positionTimestamp || frame2.frameTimestamp
 		})
 		return new Speed(speed)
+	}
+
+	/**
+	 * Calculate the speed between any two tracker frames along a route line
+	 *
+	 * @static
+	 * @param {Frame} frame1
+	 * @param {Frame} frame2
+	 * @param {Route} route
+	 * @return {*}  {Speed}
+	 * @memberof Tracker
+	 */
+	static calcSpeedAlongRouteLine(frame1: Frame, frame2: Frame, route: Route): Speed {
+		// Get the distance travelled along the route line for frame 1
+		let distance1 = route.getDistanceAlongRoute(frame1.position)
+
+		// Get the distance travelled along the route line for frame 2
+		let distance2 = route.getDistanceAlongRoute(frame2.position)
+
+		// Get the time difference between the two frames
+		let time = frame2.timestamp - frame1.timestamp
+
+		// Calculate the speed
+		let speed = (distance2.m - distance1.m) / (time / 1000)
+
+		return new Speed(speed)
+	}
+	
+	/**
+	 * Calculates the present speed of the tracker based on the last two recorded frames
+	 *
+	 * @param {Route} route
+	 * @return {*}  {Speed}
+	 * @memberof Tracker
+	 */
+	calcSpeedAlongRouteLine(route: Route): Speed { 
+		if (this.frames.length < 2) return new Speed(0)
+		return Tracker.calcSpeedAlongRouteLine(this.lastFrame as Frame, this.currentFrame as Frame, route)
 	}
 
 	/**
@@ -411,6 +460,71 @@ export class Tracker {
 		const projectedPositionOnRoute = route.getRoutePointFromDistance(projectedDistance)
 
 		return projectedPositionOnRoute
+	}
+
+	/**
+	 * Given a tracker to compare against, calculate properties like the time it will take for the two to meet, the distance between them, etc.
+	 * Also handles projections into the future, and projections along a route line.
+	 *
+	 * @param {Tracker} tracker
+	 * @param {number} [time]
+	 * @param {Route} [route]
+	 * @return {*}  {TrackerRelativeMotion}
+	 * @memberof Tracker
+	 */
+	calcTrackerRelativeMotion(tracker: Tracker, time?: number, route?: Route): TrackerRelativeMotion {
+		let relativeMotion = {} as RelativeMotion;
+		let projectedRelativeMotion = {} as RelativeMotion;
+		let relativeMotionAlongRoute = {} as RelativeMotion;
+		let projectedRelativeMotionAlongRoute = {} as RelativeMotion;
+		time = time || Date.now()
+
+		// If we have at least one frame, we can compute the distance between the trackers
+		if (this.frames.length > 0 && tracker.frames.length > 0) {
+			relativeMotion.deltaDistance = new Distance(geolib.getDistance((this.position as Position), (tracker.position as Position)))
+		}
+
+		// If we have at least two frames for each tracker, we know speeds, bearings and can project positions
+		if (this.frames.length > 1 && tracker.frames.length > 1) {
+			relativeMotion.deltaSpeed = new Speed(this.speed.mps - tracker.speed.mps)
+			relativeMotion.deltaTime = Math.abs((relativeMotion.deltaDistance as Distance).m / relativeMotion.deltaSpeed.mps);
+
+			let thisProjectedPosition = this.projectPosition(time || Date.now())
+			let targetProjectedPosition = tracker.projectPosition(time || Date.now())
+			projectedRelativeMotion.deltaDistance = new Distance(geolib.getDistance((thisProjectedPosition as Position), (targetProjectedPosition as Position)))
+			projectedRelativeMotion.deltaTime = Math.abs((projectedRelativeMotion.deltaDistance as Distance).m / relativeMotion.deltaSpeed.mps);
+		}
+
+		// If we have a route, we can also compute RelativeMotion along the route for further accuracy (given that vehicles will drive a predictable path)
+		if (route) {
+			let thisDistanceAlongRoute = route.getDistanceAlongRoute(this.position as Position)
+			let targetDistanceAlongRoute = route.getDistanceAlongRoute(tracker.position as Position)
+			relativeMotionAlongRoute.deltaDistance = new Distance(thisDistanceAlongRoute.m - targetDistanceAlongRoute.m)
+
+			let thisSpeedAlongRoute = this.calcSpeedAlongRouteLine(route)
+			let targetSpeedAlongRoute = tracker.calcSpeedAlongRouteLine(route)
+			relativeMotionAlongRoute.deltaSpeed = new Speed(thisSpeedAlongRoute.mps - targetSpeedAlongRoute.mps)
+			relativeMotionAlongRoute.deltaTime = Math.abs((relativeMotionAlongRoute.deltaDistance as Distance).m / relativeMotionAlongRoute.deltaSpeed.mps);
+
+			if (this.frames.length > 1 && tracker.frames.length > 1) {
+				let thisProjectedPosition = this.projectPositionOnRouteLine(time || Date.now(), route)
+				let targetProjectedPosition = tracker.projectPositionOnRouteLine(time || Date.now(), route)
+				let thisDistanceAlongRoute = route.getDistanceAlongRoute(thisProjectedPosition as Position)
+				let targetDistanceAlongRoute = route.getDistanceAlongRoute(targetProjectedPosition as Position)
+				
+				projectedRelativeMotionAlongRoute.deltaDistance = new Distance(thisDistanceAlongRoute.m - targetDistanceAlongRoute.m)
+				projectedRelativeMotionAlongRoute.deltaTime = Math.abs((projectedRelativeMotionAlongRoute.deltaDistance as Distance).m / relativeMotionAlongRoute.deltaSpeed.mps);
+			}
+		}
+
+		return {
+			...relativeMotion,
+			projected: projectedRelativeMotion,
+			alongRoute: {
+				...relativeMotionAlongRoute,
+				projected: projectedRelativeMotionAlongRoute
+			}
+		}
 	}
 
 	/**

@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.1.0](https://github.com/florisporro/trackerlib/compare/v0.0.6...v0.1.0) (2023-08-11)
+
+
+### Features
+
+* Add comparative calculations between two trackers ([995ca60](https://github.com/florisporro/trackerlib/commit/995ca6097c96b900a0a21f68da061f1e726ee724))
+
+
+### Bug Fixes
+
+* Add list to properly deserialize ([dba5270](https://github.com/florisporro/trackerlib/commit/dba5270e0ce3f978824821f722519b33540160c5))
+* Make filtered speed return as 0 when sample count not high enough ([2108dd2](https://github.com/florisporro/trackerlib/commit/2108dd26c30d2400d185c56ec3780ff7d9ed19ea))
+* Trackerlist deserializer typescript intellisense not correct ([345a26a](https://github.com/florisporro/trackerlib/commit/345a26adcff9c70c7502199c341d22b7d11347a9))
+* Typecasting for Speed and Distance classes ([74ff729](https://github.com/florisporro/trackerlib/commit/74ff72951f2f8c3d10b0856974de00c7d9294d6c))
+
 ## [0.0.6](https://github.com/florisporro/trackerlib/compare/v0.0.5...v0.0.6) (2023-03-23)
 
 

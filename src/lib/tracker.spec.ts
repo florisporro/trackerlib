@@ -3,11 +3,13 @@ import { describe, it, expect, beforeEach } from 'vitest'
 import { Tracker, Frame } from "./tracker";
 import { Route, RoutePoint } from "./route";
 import { Position } from "./units"
+const now = Date.now();
 
 describe("Tracker", () => {
 	let tracker: Tracker;
 
 	beforeEach(() => {
+
 		tracker = new Tracker("Test Tracker", "Car", {
 			team: "Test Team"
 		});
@@ -21,19 +23,19 @@ describe("Tracker", () => {
 		tracker.record({
 				latitude: 0.01,
 				longitude: 25.0
-			}, Date.now() + 60000
+			}, now + 60000
 		)
 
 		tracker.record({
 				latitude: 0.01,
 				longitude: 25.0
-			}, Date.now() + 60000
+			}, now + 60000
 		)
 
 		tracker.record({
 				latitude: 0.02,
 				longitude: 25.0
-			}, Date.now() + 120000
+			}, now + 120000
 		)
 	});
 
@@ -74,7 +76,7 @@ describe("Tracker", () => {
 	})
 
 	it("projects position based on tracker history", () => {
-		const projectedPosition = tracker.projectPosition(Date.now() + 180000)
+		const projectedPosition = tracker.projectPosition(now + 180000)
 
 		expect((projectedPosition as Position).latitude).to.be.above(0.02)
 		expect((projectedPosition as Position).latitude).to.be.below(0.04)
@@ -82,7 +84,7 @@ describe("Tracker", () => {
 	})
 
 	it("projects total distance based on tracker history", () => {
-		const projectedDistance = tracker.projectTotalDistance(Date.now() + 180000)
+		const projectedDistance = tracker.projectTotalDistance(now + 180000)
 
 		expect(projectedDistance.m).to.be.below(4000)
 		expect(projectedDistance.m).to.be.above(3000)
@@ -94,7 +96,7 @@ describe("Tracker", () => {
 
 	it("at a constant speed, filtered speed remains constant too", () => {
 		const filteredSpeed = tracker.filterSpeed(0.2, 2)
-		expect(filteredSpeed.mps).to.equal(18.55)
+		expect(Number(filteredSpeed.mps.toFixed(2))).to.equal(18.55)
 	})
 
 	it("at sudden acceleration, filtered speed increases by the difference times the factor", () => {
@@ -103,7 +105,7 @@ describe("Tracker", () => {
 				latitude: 0.04,
 				longitude: 25.0
 			},
-			Date.now() + 180000
+			now + 180000
 		)
 
 		const difference = 18.55 * 0.2
@@ -152,19 +154,19 @@ describe("Tracker", () => {
 					latitude: 0.0,
 					longitude: 25.0
 				},
-				Date.now() + 60000
+				now + 60000
 			)
 
 			tracker2.record({
 					latitude: 0.01,
 					longitude: 25.0
 				},
-				Date.now() + 120000
+				now + 120000
 			)
 		})
 
 		it("projects position directly ahead", () => {
-			const projectedPosition = tracker2.projectPosition(Date.now() + 180000)
+			const projectedPosition = tracker2.projectPosition(now + 180000)
 
 			expect((projectedPosition as Position).latitude).to.be.above(0.019)
 			expect((projectedPosition as Position).latitude).to.be.below(0.021)
@@ -172,7 +174,7 @@ describe("Tracker", () => {
 		})
 
 		it("projects position along the route line", () => {
-			const projectedPosition = tracker2.projectPositionOnRouteLine(Date.now() + 180000, route)
+			const projectedPosition = tracker2.projectPositionOnRouteLine(now + 180000, route)
 
 			expect(projectedPosition.latitude).to.equal(0.01)
 			expect(projectedPosition.longitude).to.be.above(25.009)

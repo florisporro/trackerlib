@@ -90,6 +90,11 @@ export class Speed {
 	get kts() {
 		return this.speed * 1.944
 	}
+
+	valueOf() {
+		return this.mps;
+	}
+
 }
 
 /**
@@ -157,4 +162,9 @@ export class Distance {
 	get nm() {
 		return this.distance / 1852
 	}
+
+	valueOf() {
+		return this.m;
+	}
+
 }

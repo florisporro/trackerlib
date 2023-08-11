@@ -1,7 +1,7 @@
 import { Tracker } from "./tracker"
 import { Route } from "./route"
-import { Distance } from "./units"
-import { serializable, identifier, object, serialize, deserialize } from "serializr";
+import { Distance, Speed } from "./units"
+import { serializable, identifier, list, object, serialize, deserialize } from "serializr";
 
 /**
  * A tracker list is a collection of trackers

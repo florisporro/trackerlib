@@ -1,4 +1,4 @@
-import { Speed } from "./units";
+import { Speed } from "../";
 
 import { describe, it, expect } from 'vitest'
 

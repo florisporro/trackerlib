@@ -1,8 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 
-import { Tracker, Frame } from "./tracker";
-import { Route, RoutePoint } from "./route";
-import { Position } from "./units"
+import { Tracker, Frame, Route, RoutePoint, Position } from "../";
 const now = Date.now();
 
 describe("Tracker", () => {

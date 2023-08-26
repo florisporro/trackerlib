@@ -2,8 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest'
 
 import * as geolib from "geolib";
 
-import { Route, RoutePoint } from "./route";
-import { Distance } from "./units";
+import { Route, RoutePoint, Distance } from "../";
 
 
 describe("Route", () => {

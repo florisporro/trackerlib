@@ -1,9 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 
-import { TrackerList } from "./trackerlist";
-import { Tracker, Frame } from "./tracker";
-import { Route, RoutePoint } from "./route";
-import { Position } from "./units"
+import { TrackerList, Tracker, Frame, Route, RoutePoint } from "../";
 
 describe("Tracker", () => {
 	let tracker1: Tracker;

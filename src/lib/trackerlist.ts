@@ -59,6 +59,21 @@ export class TrackerList {
 	}
 
 	/**
+	 * Sorts the trackers in the list by the total distance each has travelled (since tracking began). Returns a copy.
+	 *
+	 * @return {Tracker[]} 
+	 * @memberof TrackerList
+	 */
+	sortByTotalDistanceTravelledAlongRoute(route: Route): Tracker[] {
+		return this.trackers = [ ...this.trackers ].sort((a, b) => {
+			if (!a.currentFrame || !b.currentFrame) return 0
+			const aDistance = a.totalDistanceAlongRouteLine(route).m
+			const bDistance = a.totalDistanceAlongRouteLine(route).m
+			return bDistance - aDistance
+		})
+	}
+
+	/**
 	 * Returns a new array of the distances that all trackers are projected to have travelled, based on an elapsed time.
 	 *
 	 * @param {number} time
